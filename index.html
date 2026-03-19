@@ -1,0 +1,3229 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dulcinella — Torturi Custom Made</title>
+  <meta name="description" content="Dulcinella — Torturi custom made din Târgu Mureș. Creează-ți tortul perfect: alege blatul, crema, toppingurile și designul. Comandă online.">
+  <meta name="keywords" content="torturi custom, prajituri personalizate, Târgu Mureș, tort comandă online, Dulcinella">
+  <meta property="og:title" content="Dulcinella — Torturi Custom Made">
+  <meta property="og:description" content="Creează-ți tortul perfect din Târgu Mureș. Custom made, livrat cu drag.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ro_RO">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Dulcinella — Torturi Custom Made">
+  <meta name="twitter:description" content="Torturi personalizate din Târgu Mureș. Configurează online.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500&display=swap');
+
+    /* ─── DESIGN TOKENS ─────────────────────────────────────── */
+    :root {
+      --cream:       #fdf6ee;
+      --brown-dark:  #2c1a0e;
+      --brown-mid:   #7a3d18;
+      --gold:        #c97d4e;
+      --gold-light:  #e0a87a;
+      --blush:       #f2d9c8;
+      --white:       #fffef9;
+      --shadow:      0 2px 16px rgba(44,26,14,0.08);
+      --shadow-md:   0 4px 28px rgba(44,26,14,0.13);
+      --border-gold: 0.5px solid rgba(201,125,78,0.25);
+      --radius-card: 16px;
+      --radius-btn:  999px;
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
+      --font-sans:   'DM Sans', system-ui, sans-serif;
+      --transition:  0.22s ease;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--brown-dark);
+      line-height: 1.6;
+      background-image: radial-gradient(ellipse at 20% 10%, rgba(242,217,200,0.45) 0%, transparent 55%),
+                        radial-gradient(ellipse at 80% 90%, rgba(201,125,78,0.12) 0%, transparent 50%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    input, textarea, select { font-family: inherit; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .phone-link { color: inherit; text-decoration: none; }
+    .phone-link:hover { color: var(--gold); text-decoration: underline; }
+    @media (max-width: 768px) { .phone-link { color: var(--gold); font-weight: 500; } }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: var(--brown-dark);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--brown-mid);
+      max-width: 520px;
+    }
+    .section-header { margin-bottom: 48px; }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-btn);
+      padding: 12px 28px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      border: none;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: scale(1.03); }
+    .btn:active { transform: scale(0.98); }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--brown-dark);
+      box-shadow: 0 2px 12px rgba(201,125,78,0.28);
+    }
+    .btn-gold:hover { background: var(--gold-light); box-shadow: 0 4px 20px rgba(201,125,78,0.4); }
+    .btn-outline {
+      background: transparent;
+      color: var(--brown-dark);
+      border: 1.5px solid rgba(44,26,14,0.25);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--brown-mid); }
+
+    /* ─── CARD ───────────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: var(--border-gold);
+      box-shadow: var(--shadow);
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────────── */
+    #navbar {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(253,246,238,0.88);
+      border-bottom: var(--border-gold);
+      transition: box-shadow 0.3s;
+    }
+    #navbar.scrolled { box-shadow: 0 2px 20px rgba(44,26,14,0.10); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 24px;
+    }
+    /* Logo */
+    .nav-logo { flex-shrink: 0; cursor: pointer; }
+    .nav-logo svg { height: 40px; width: auto; }
+    /* Nav links */
+    .nav-links {
+      display: flex; align-items: center; gap: 36px;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--brown-dark);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .nav-links a:hover { color: var(--brown-mid); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    /* Language toggle */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 4px;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      padding: 5px 12px;
+      border-radius: var(--radius-btn);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--brown-dark);
+      background: transparent;
+      border: 1px solid transparent;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--brown-dark);
+      box-shadow: 0 1px 6px rgba(201,125,78,0.30);
+    }
+    .lang-btn:not(.active):hover { border-color: rgba(201,125,78,0.4); }
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--brown-dark);
+      border-radius: 2px;
+      transition: all 0.28s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(253,246,238,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: var(--border-gold);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+    }
+    .mobile-menu.open {
+      max-height: 340px;
+      padding: 16px 0;
+    }
+    .mobile-menu a {
+      padding: 13px 24px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+      border-bottom: var(--border-gold);
+      transition: background var(--transition);
+    }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-menu a:hover { background: var(--blush); }
+    .mobile-menu .lang-toggle { padding: 14px 24px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-inner > .lang-toggle { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 100px 0 80px;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    .hero-blob-1 {
+      width: 520px; height: 420px;
+      background: radial-gradient(circle, #f2d9c8, transparent 70%);
+      top: -80px; right: -60px;
+    }
+    .hero-blob-2 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(201,125,78,0.22), transparent 70%);
+      bottom: 40px; left: -100px;
+    }
+    .hero-blob-3 {
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(242,217,200,0.6), transparent 70%);
+      top: 40%; right: 20%;
+    }
+    .hero-blob-4 {
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(201,125,78,0.18), transparent 70%);
+      top: 20%; left: 30%;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s ease forwards;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.07;
+      color: var(--brown-dark);
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.25s ease forwards;
+    }
+    .hero-title em { font-style: normal; color: var(--brown-mid); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--brown-mid);
+      margin-bottom: 38px;
+      max-width: 460px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.42s ease forwards;
+    }
+    .hero-ctas {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.58s ease forwards;
+    }
+    .hero-deco {
+      position: absolute; right: 5%; top: 50%;
+      transform: translateY(-50%);
+      width: min(420px, 42vw);
+      opacity: 0;
+      animation: fadeIn 1.2s 0.7s ease forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── SHOWCASE ───────────────────────────────────────────── */
+    #modele {
+      padding: 100px 0;
+    }
+    .cakes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 28px;
+    }
+    .cake-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: var(--border-gold);
+      box-shadow: var(--shadow);
+      padding: 28px 24px 24px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .cake-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    /* CSS cake illustration */
+    .cake-art {
+      width: 100%; height: 140px;
+      position: relative;
+      display: flex; align-items: flex-end; justify-content: center;
+      margin-bottom: 4px;
+    }
+    .cake-art .c-base {
+      position: absolute;
+      border-radius: 50%;
+      bottom: 0;
+    }
+    .cake-art .c-layer {
+      position: absolute;
+      border-radius: 18px 18px 0 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .cake-art .c-top {
+      position: absolute;
+      border-radius: 14px 14px 0 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .cake-art .c-cream {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0;
+    }
+    .cake-art .c-deco {
+      position: absolute;
+      border-radius: 50%;
+    }
+    /* Cake themes */
+    .cake-trandafir .c-layer  { width: 130px; height: 55px; background: #f7b8c0; bottom: 20px; }
+    .cake-trandafir .c-top    { width: 110px; height: 48px; background: #f9ccd4; bottom: 72px; }
+    .cake-trandafir .c-cream  { width: 130px; height: 8px; background: #fffef9; bottom: 68px; }
+    .cake-trandafir .c-base   { width: 145px; height: 14px; background: #f0a8b5; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 50%; }
+    .cake-trandafir .c-deco   { width: 14px; height: 14px; background: #e84060; bottom: 112px; left: calc(50% - 30px); }
+    .cake-trandafir .c-deco2  { width: 10px; height: 10px; background: #e84060; border-radius: 50%; bottom: 118px; left: calc(50% + 16px); position: absolute; }
+
+    .cake-negresa .c-layer  { width: 130px; height: 55px; background: #3b1f0a; bottom: 20px; }
+    .cake-negresa .c-top    { width: 110px; height: 48px; background: #5c3317; bottom: 72px; }
+    .cake-negresa .c-cream  { width: 130px; height: 8px; background: #2c1a0e; bottom: 68px; }
+    .cake-negresa .c-base   { width: 145px; height: 14px; background: #2a1508; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 50%; }
+    .cake-negresa .c-deco   { width: 12px; height: 12px; background: #f0f0f0; bottom: 115px; left: calc(50% - 22px); }
+    .cake-negresa .c-deco2  { width: 9px; height: 9px; background: #f0f0f0; border-radius: 50%; bottom: 120px; left: calc(50% + 10px); position: absolute; }
+
+    .cake-lavanda .c-layer  { width: 130px; height: 55px; background: #c8b4e0; bottom: 20px; }
+    .cake-lavanda .c-top    { width: 110px; height: 48px; background: #e0d0f0; bottom: 72px; }
+    .cake-lavanda .c-cream  { width: 130px; height: 8px; background: #faf0e6; bottom: 68px; }
+    .cake-lavanda .c-base   { width: 145px; height: 14px; background: #b8a0d0; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 50%; }
+    .cake-lavanda .c-deco   { width: 11px; height: 11px; background: #6a3d8a; bottom: 114px; left: calc(50% - 18px); }
+    .cake-lavanda .c-deco2  { width: 8px; height: 8px; background: #4a2c8a; border-radius: 50%; bottom: 121px; left: calc(50% + 8px); position: absolute; }
+
+    .cake-caramel .c-layer  { width: 130px; height: 55px; background: #d4a560; bottom: 20px; }
+    .cake-caramel .c-top    { width: 110px; height: 48px; background: #f0c880; bottom: 72px; }
+    .cake-caramel .c-cream  { width: 130px; height: 8px; background: #c9872a; bottom: 68px; }
+    .cake-caramel .c-base   { width: 145px; height: 14px; background: #b8903a; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 50%; }
+    .cake-caramel .c-deco   { width: 12px; height: 12px; background: #8b6240; bottom: 115px; left: calc(50% - 25px); }
+    .cake-caramel .c-deco2  { width: 9px; height: 9px; background: #6b4c2a; border-radius: 50%; bottom: 120px; left: calc(50% + 14px); position: absolute; }
+
+    .cake-fistic .c-layer  { width: 130px; height: 55px; background: #6b9e6a; bottom: 20px; }
+    .cake-fistic .c-top    { width: 110px; height: 48px; background: #7db87a; bottom: 72px; }
+    .cake-fistic .c-cream  { width: 130px; height: 8px; background: #b0d4f0; bottom: 68px; }
+    .cake-fistic .c-base   { width: 145px; height: 14px; background: #5a8e5a; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 50%; }
+    .cake-fistic .c-deco   { width: 13px; height: 13px; background: #c8a882; bottom: 114px; left: calc(50% - 28px); }
+    .cake-fistic .c-deco2  { width: 9px; height: 9px; background: #a08868; border-radius: 50%; bottom: 120px; left: calc(50% + 16px); position: absolute; }
+
+    .cake-velvet .c-layer  { width: 130px; height: 55px; background: #9b1c2e; bottom: 20px; }
+    .cake-velvet .c-top    { width: 110px; height: 48px; background: #c03040; bottom: 72px; }
+    .cake-velvet .c-cream  { width: 130px; height: 8px; background: #e8d84a; bottom: 68px; }
+    .cake-velvet .c-base   { width: 145px; height: 14px; background: #800c1c; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 50%; }
+    .cake-velvet .c-deco   { width: 12px; height: 12px; background: #f5c842; bottom: 115px; left: calc(50% - 22px); }
+    .cake-velvet .c-deco2  { width: 8px; height: 8px; background: #c9872a; border-radius: 50%; bottom: 121px; left: calc(50% + 12px); position: absolute; }
+
+    .cake-meta { display: flex; flex-direction: column; gap: 6px; }
+    .cake-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+    .cake-desc {
+      font-size: 0.875rem;
+      color: var(--brown-mid);
+      line-height: 1.5;
+    }
+    .cake-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto; padding-top: 10px;
+      border-top: var(--border-gold);
+    }
+    .cake-price {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+    .cake-price span { font-size: 0.85rem; font-weight: 400; color: var(--brown-mid); }
+    .cake-order-btn {
+      font-size: 0.82rem;
+      padding: 8px 18px;
+    }
+
+    /* ─── CONFIGURATOR ────────────────────────────────────────── */
+    #configurator {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--cream) 0%, rgba(242,217,200,0.25) 50%, var(--cream) 100%);
+    }
+    /* Step progress */
+    .step-progress {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: 48px;
+    }
+    .step-item {
+      display: flex; align-items: center;
+    }
+    .step-circle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,125,78,0.3);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle.active {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--brown-dark);
+      box-shadow: 0 0 0 4px rgba(201,125,78,0.18);
+    }
+    .step-circle.done {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--brown-dark);
+    }
+    .step-circle.done::after {
+      content: '✓';
+      position: absolute;
+      font-size: 0.78rem;
+    }
+    .step-circle.done .step-num { display: none; }
+    .step-line {
+      width: 60px; height: 2px;
+      background: rgba(201,125,78,0.2);
+      transition: background 0.3s ease;
+    }
+    .step-line.done { background: var(--gold); }
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      margin-top: 6px;
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .step-item.active .step-label { opacity: 1; color: var(--gold); }
+    .step-item-wrap { display: flex; flex-direction: column; align-items: center; }
+
+    /* Config layout */
+    .config-layout {
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .config-controls {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: var(--border-gold);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      max-height: 75vh;
+    }
+    .config-panel {
+      display: none;
+      padding: 32px;
+      animation: slideIn 0.35s ease;
+    }
+    .config-panel.active { display: block; flex: 1; overflow-y: auto; min-height: 0; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .config-panel-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .config-panel-sub {
+      font-size: 0.875rem;
+      color: var(--brown-mid);
+      margin-bottom: 28px;
+    }
+    .option-group-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+    .option-group-label:first-child { margin-top: 0; }
+    /* Option tiles (radio/checkbox) */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .options-grid-wide {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    .option-tile {
+      position: relative;
+      cursor: pointer;
+    }
+    .option-tile input {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .option-tile-inner {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(201,125,78,0.18);
+      background: var(--cream);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      min-height: 56px;
+    }
+    .option-tile input:checked + .option-tile-inner {
+      border-color: var(--gold);
+      background: rgba(242,217,200,0.45);
+      box-shadow: 0 0 0 3px rgba(201,125,78,0.14);
+    }
+    .option-tile-inner:hover { border-color: var(--gold-light); }
+    .option-tile-top {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .option-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(44,26,14,0.15);
+      flex-shrink: 0;
+    }
+    .option-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--brown-dark);
+      line-height: 1.3;
+      flex: 1;
+    }
+    .option-price {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .option-price.included { color: var(--brown-mid); opacity: 0.7; }
+    /* Checkbox option tiles */
+    .option-tile.checkbox .option-tile-inner {
+      min-height: auto;
+      padding: 10px 14px;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+    /* Special checkbox row options */
+    .check-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .check-tile {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(201,125,78,0.18);
+      background: var(--cream);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .check-tile input { display: none; }
+    .check-tile.checked {
+      border-color: var(--gold);
+      background: rgba(242,217,200,0.45);
+    }
+    .check-tile-check {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(201,125,78,0.4);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .check-tile.checked .check-tile-check {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .check-tile.checked .check-tile-check::after {
+      content: '✓';
+      font-size: 11px;
+      color: var(--brown-dark);
+    }
+    .check-tile-label { font-size: 0.85rem; font-weight: 500; color: var(--brown-dark); flex: 1; }
+    .check-tile-price { font-size: 0.78rem; color: var(--gold); font-weight: 500; }
+    /* Step nav buttons */
+    .step-nav {
+      display: flex; justify-content: space-between;
+      padding: 20px 32px;
+      border-top: var(--border-gold);
+      background: rgba(253,246,238,0.6);
+    }
+    /* Preview column */
+    .config-preview {
+      position: sticky;
+      top: 80px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .canvas-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: var(--border-gold);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .canvas-card-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--brown-mid);
+      align-self: flex-start;
+    }
+    #cakeCanvas {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    /* Price summary */
+    #priceSummary {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: var(--border-gold);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .price-summary-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: var(--border-gold);
+    }
+    .price-line {
+      display: flex; justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--brown-mid);
+      padding: 4px 0;
+    }
+    .price-line.base { color: var(--brown-dark); font-weight: 500; }
+    .price-category-header {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      padding: 8px 0 2px;
+      margin-top: 4px;
+      border-top: 1px solid rgba(201,125,78,0.15);
+    }
+    .price-category-item {
+      display: flex; justify-content: space-between;
+      font-size: 0.80rem;
+      color: var(--brown-mid);
+      padding: 2px 0 2px 10px;
+    }
+    .price-category-subtotal {
+      display: flex; justify-content: space-between;
+      font-size: 0.80rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+      padding: 3px 0 4px;
+      border-bottom: 1px solid rgba(201,125,78,0.15);
+    }
+    .price-total {
+      display: flex; justify-content: space-between;
+      align-items: baseline;
+      padding-top: 12px;
+      margin-top: 8px;
+      border-top: 1px solid rgba(201,125,78,0.3);
+    }
+    .price-total-label {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--gold);
+    }
+    .price-total-value {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--gold);
+      transition: transform 0.3s ease, color 0.2s;
+    }
+    .price-flash { animation: priceFlash 0.5s ease; }
+    @keyframes priceFlash {
+      0%   { transform: scale(1); color: var(--gold); }
+      30%  { transform: scale(1.18); color: var(--brown-dark); }
+      100% { transform: scale(1); color: var(--gold); }
+    }
+    .price-lei { font-size: 1rem; font-weight: 400; margin-left: 2px; }
+    .finalize-btn { width: 100%; justify-content: center; margin-top: 4px; }
+    .topping-limit-notice {
+      font-size: 13px; color: var(--gold); margin-top: 10px;
+      opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
+    }
+    .topping-limit-notice.visible { opacity: 1; }
+    .option-tile.topping-disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+    /* Dulci radio-style tiles */
+    .option-tile.dulci-radio .option-tile-inner { flex-direction:row; align-items:center; gap:10px; min-height:auto; padding:10px 14px; }
+    .radio-ind { width:14px; height:14px; border-radius:50%; border:1.5px solid rgba(201,125,78,0.4); background:var(--white); flex-shrink:0; transition:all 0.2s; display:flex; align-items:center; justify-content:center; }
+    .option-tile.dulci-radio input:checked + .option-tile-inner .radio-ind { border-color:var(--gold); background:var(--gold); }
+    .option-tile.dulci-radio input:checked + .option-tile-inner .radio-ind::after { content:''; width:5px; height:5px; border-radius:50%; background:var(--white); display:block; }
+
+    /* Mobile price bar */
+    #mobilePriceBar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 80;
+      background: rgba(253,246,238,0.97);
+      backdrop-filter: blur(14px);
+      border-top: var(--border-gold);
+      box-shadow: 0 -4px 20px rgba(44,26,14,0.10);
+    }
+    .mobile-price-collapsed {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px;
+      cursor: pointer;
+    }
+    .mobile-price-total {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .mobile-price-expanded {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      padding: 0 20px;
+    }
+    .mobile-price-expanded.open {
+      max-height: 320px;
+      padding: 0 20px 16px;
+    }
+
+    /* ─── FLOAT BUTTON + MODAL ───────────────────────────────── */
+    #cakeFloatBtn {
+      display: none;
+      position: fixed; bottom: 84px; right: 18px; z-index: 90;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--gold);
+      font-size: 1.5rem;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(201,125,78,0.45);
+      align-items: center; justify-content: center;
+    }
+    #cakeModal {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(44,26,14,0.72);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    #cakeModal.open { display: flex; }
+    .cake-modal-box {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      width: 100%; max-width: 340px;
+      position: relative;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+    }
+    .cake-modal-close {
+      position: absolute; top: 12px; right: 14px;
+      font-size: 1.2rem; line-height: 1;
+      background: none; border: none; cursor: pointer;
+      color: var(--brown-mid);
+    }
+    #cakeModalImg { max-width: 100%; border-radius: 8px; }
+    .cake-modal-price {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    @media (max-width: 768px) {
+      .config-layout { grid-template-columns: 1fr; }
+      .config-preview { position: static; }
+      #priceSummary { display: none; }
+      .config-preview > .finalize-btn { display: none; }
+      #mobilePriceBar { display: block; }
+      body { padding-bottom: 70px; }
+      #cakeFloatBtn { display: flex; }
+      .config-controls { max-height: none; overflow: hidden; }
+      .config-panel.active { flex: none; overflow-y: visible; }
+      .option-tile-inner { padding: 12px 14px; min-height: 72px; }
+      .options-grid { gap: 10px; }
+      .option-name { font-size: 0.82rem; }
+    }
+
+    /* ─── TEXT INPUT STEP 5 ───────────────────────────────────── */
+    .form-field {
+      display: flex; flex-direction: column; gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--brown-mid);
+    }
+    .form-input {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(201,125,78,0.25);
+      background: var(--cream);
+      color: var(--brown-dark);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus { border-color: var(--gold); background: var(--white); }
+    .form-input.error { border-color: #e84060; background: rgba(232,64,96,0.04); }
+    .form-textarea { min-height: 100px; resize: vertical; }
+    .form-input[type="color"] {
+      height: 44px; padding: 6px 8px;
+      cursor: pointer; border-radius: 10px;
+    }
+
+    /* ─── ORDER FORM ─────────────────────────────────────────── */
+    #comanda { padding: 100px 0; }
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 48px;
+    }
+    .order-form-wrap {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: var(--border-gold);
+      box-shadow: var(--shadow);
+      padding: 40px;
+    }
+    .order-info {
+      display: flex; flex-direction: column; gap: 28px;
+      padding-top: 12px;
+    }
+    .order-info-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: var(--border-gold);
+      padding: 22px;
+    }
+    .order-info-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .order-info-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .order-info-text { font-size: 0.875rem; color: var(--brown-mid); line-height: 1.6; }
+    /* Confirmation */
+    #orderConfirmation {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: 1.5px solid var(--gold);
+      box-shadow: var(--shadow-md);
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .confirm-logo { margin: 0 auto 20px; }
+    .confirm-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .confirm-text { color: var(--brown-mid); font-size: 0.95rem; line-height: 1.7; }
+    .confirm-summary {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 20px 0;
+      font-size: 0.875rem;
+      color: var(--brown-mid);
+      text-align: left;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 768px) {
+      .order-layout { grid-template-columns: 1fr; }
+      .order-form-wrap { padding: 24px 20px; }
+    }
+
+    /* ─── FAQ ────────────────────────────────────────────────── */
+    #faq { padding: 100px 0; }
+    .faq-list { max-width: 760px; }
+    .faq-item {
+      border-bottom: var(--border-gold);
+      overflow: hidden;
+    }
+    .faq-item:first-child { border-top: var(--border-gold); }
+    .faq-question {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0;
+      text-align: left;
+      font-size: 0.975rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+      background: none;
+      border: none;
+      cursor: pointer;
+      gap: 16px;
+      transition: color var(--transition);
+    }
+    .faq-question:hover { color: var(--brown-mid); }
+    .faq-icon {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,125,78,0.35);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      color: var(--gold);
+      transition: transform 0.3s ease, background 0.2s;
+    }
+    .faq-question.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--gold);
+      color: var(--brown-dark);
+      border-color: var(--gold);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 0 20px;
+      font-size: 0.9rem;
+      color: var(--brown-mid);
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--brown-dark);
+      color: rgba(253,246,238,0.85);
+      padding: 64px 0 40px;
+    }
+    .footer-inner {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 18px;
+    }
+    .footer-logo svg .oval-stroke { stroke: rgba(201,125,78,0.7); }
+    .footer-logo svg text { fill: rgba(253,246,238,0.9); }
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(242,217,200,0.7);
+    }
+    .footer-contact {
+      display: flex; flex-wrap: wrap; gap: 4px 24px;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+    .footer-contact a { color: rgba(201,125,78,0.9); transition: color var(--transition); }
+    .footer-contact a:hover { color: var(--gold-light); }
+    .footer-sep { color: rgba(201,125,78,0.35); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(253,246,238,0.35);
+      margin-top: 10px;
+    }
+    .footer-divider {
+      width: 60px; height: 1px;
+      background: rgba(201,125,78,0.3);
+      margin: 6px auto;
+    }
+
+    /* ─── SCROLL ANIMATIONS ──────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MISC ───────────────────────────────────────────────── */
+    .pickup-note {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem;
+      color: var(--brown-mid);
+      background: rgba(242,217,200,0.5);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-top: 8px;
+    }
+    .error-msg {
+      font-size: 0.78rem;
+      color: #c9243a;
+      margin-top: 4px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    @media (max-width: 640px) {
+      .cakes-grid { grid-template-columns: 1fr; }
+      .options-grid { grid-template-columns: repeat(2, 1fr); }
+      .step-line { width: 30px; }
+      .config-panel { padding: 20px 16px; }
+      .step-nav { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <div class="nav-logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})" aria-label="Dulcinella — acasă">
+        <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="#c97d4e" stroke-width="0.8"/>
+          <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="#c97d4e" stroke-width="0.3" stroke-dasharray="3,2"/>
+          <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="#2c1a0e" letter-spacing="1">Dulcinella</text>
+        </svg>
+      </div>
+      <!-- Nav links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#modele" data-i18n="nav.modele">Modele</a></li>
+        <li><a href="#configurator" data-i18n="nav.configurator">Configurator</a></li>
+        <li><a href="#comanda" data-i18n="nav.comanda">Comandă</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      </ul>
+      <!-- Language toggle -->
+      <div class="lang-toggle" aria-label="Schimbă limba">
+        <button class="lang-btn" id="langRo" onclick="setLang('ro')" aria-label="Română">RO</button>
+        <button class="lang-btn" id="langEn" onclick="setLang('en')" aria-label="English">EN</button>
+      </div>
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Meniu" aria-expanded="false" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="menu">
+    <a href="#modele" data-i18n="nav.modele" onclick="closeMobileMenu()">Modele</a>
+    <a href="#configurator" data-i18n="nav.configurator" onclick="closeMobileMenu()">Configurator</a>
+    <a href="#comanda" data-i18n="nav.comanda" onclick="closeMobileMenu()">Comandă</a>
+    <a href="#faq" data-i18n="nav.faq" onclick="closeMobileMenu()">FAQ</a>
+    <div class="lang-toggle" style="padding:14px 24px; gap:8px;">
+      <button class="lang-btn" id="langRoM" onclick="setLang('ro');closeMobileMenu()">RO</button>
+      <button class="lang-btn" id="langEnM" onclick="setLang('en');closeMobileMenu()">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="heroTitle">
+  <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-4" aria-hidden="true"></div>
+  <!-- Decorative cake SVG -->
+  <div class="hero-deco" aria-hidden="true">
+    <svg viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg" opacity="0.22">
+      <ellipse cx="160" cy="310" rx="130" ry="18" fill="#c97d4e" opacity="0.3"/>
+      <rect x="50" y="180" width="220" height="130" rx="4" fill="#f5e6c8"/>
+      <rect x="65" y="100" width="190" height="90" rx="4" fill="#f9ccd4"/>
+      <rect x="50" y="170" width="220" height="16" rx="0" fill="#fffef9"/>
+      <rect x="65" y="93" width="190" height="12" rx="0" fill="#fffef9"/>
+      <ellipse cx="160" cy="310" rx="110" ry="10" fill="#d4a060" opacity="0.5"/>
+      <ellipse cx="100" cy="96" rx="12" ry="14" fill="#e84060" opacity="0.8"/>
+      <ellipse cx="160" cy="93" rx="12" ry="14" fill="#e84060" opacity="0.8"/>
+      <ellipse cx="220" cy="96" rx="12" ry="14" fill="#e84060" opacity="0.8"/>
+      <rect x="97" y="73" width="4" height="24" rx="2" fill="#c97d4e"/>
+      <rect x="157" y="70" width="4" height="24" rx="2" fill="#c97d4e"/>
+      <rect x="217" y="73" width="4" height="24" rx="2" fill="#c97d4e"/>
+    </svg>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">Patiserie Artizanală · Târgu Mureș</p>
+      <h1 class="hero-title" id="heroTitle" data-i18n="hero.title">Fiecare felie,<br><em>o poveste a ta</em></h1>
+      <p class="hero-sub" data-i18n="hero.sub">Torturi custom made, create de tine, coapte de noi.</p>
+      <div class="hero-ctas">
+        <a href="#configurator" class="btn btn-gold" data-i18n="hero.cta1">Creează-ți tortul</a>
+        <a href="#modele" class="btn btn-outline" data-i18n="hero.cta2">Vezi modele</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SHOWCASE — Modele Semnătură
+═══════════════════════════════════════════════════════════ -->
+<section id="modele" aria-labelledby="modeleTitle">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" data-i18n="showcase.label">Colecție exclusivă</p>
+      <h2 class="section-title" id="modeleTitle" data-i18n="showcase.title">Modele Semnătură</h2>
+      <p class="section-subtitle" data-i18n="showcase.subtitle">Creații definitorii Dulcinella — fiecare o capodoperă artizanală, gata de comandat.</p>
+    </div>
+    <div class="cakes-grid">
+
+      <!-- Card 1 — Trandafir de Vară -->
+      <article class="cake-card reveal">
+        <div class="cake-art cake-trandafir" aria-hidden="true">
+          <div class="c-base"></div>
+          <div class="c-layer"></div>
+          <div class="c-cream"></div>
+          <div class="c-top"></div>
+          <div class="c-deco"></div>
+          <div class="c-deco2"></div>
+        </div>
+        <div class="cake-meta">
+          <h3 class="cake-name" data-i18n="showcase.c1.name">Trandafir de Vară</h3>
+          <p class="cake-desc" data-i18n="showcase.c1.desc">Frișcă batută, căpșuni proaspete, glazură roz delicată — răcoare și eleganță în fiecare felie.</p>
+        </div>
+        <div class="cake-footer">
+          <div class="cake-price">220 <span>lei</span></div>
+          <button class="btn btn-gold cake-order-btn" data-i18n="showcase.orderBtn" onclick="orderModel('Trandafir de Vară', 220)">Comandă acest model</button>
+        </div>
+      </article>
+
+      <!-- Card 2 — Negresă Regală -->
+      <article class="cake-card reveal">
+        <div class="cake-art cake-negresa" aria-hidden="true">
+          <div class="c-base"></div>
+          <div class="c-layer"></div>
+          <div class="c-cream"></div>
+          <div class="c-top"></div>
+          <div class="c-deco"></div>
+          <div class="c-deco2"></div>
+        </div>
+        <div class="cake-meta">
+          <h3 class="cake-name" data-i18n="showcase.c2.name">Negresă Regală</h3>
+          <p class="cake-desc" data-i18n="showcase.c2.desc">Ciocolată dark intensă, ganache catifelat, perle de zahăr aurii — pentru iubitorii de intensitate.</p>
+        </div>
+        <div class="cake-footer">
+          <div class="cake-price">190 <span>lei</span></div>
+          <button class="btn btn-gold cake-order-btn" data-i18n="showcase.orderBtn" onclick="orderModel('Negresă Regală', 190)">Comandă acest model</button>
+        </div>
+      </article>
+
+      <!-- Card 3 — Secrets de Lavandă -->
+      <article class="cake-card reveal">
+        <div class="cake-art cake-lavanda" aria-hidden="true">
+          <div class="c-base"></div>
+          <div class="c-layer"></div>
+          <div class="c-cream"></div>
+          <div class="c-top"></div>
+          <div class="c-deco"></div>
+          <div class="c-deco2"></div>
+        </div>
+        <div class="cake-meta">
+          <h3 class="cake-name" data-i18n="showcase.c3.name">Secrets de Lavandă</h3>
+          <p class="cake-desc" data-i18n="showcase.c3.desc">Cremă mascarpone, afine proaspete, blat vanilie parfumat — o experiență aromată și rafinată.</p>
+        </div>
+        <div class="cake-footer">
+          <div class="cake-price">280 <span>lei</span></div>
+          <button class="btn btn-gold cake-order-btn" data-i18n="showcase.orderBtn" onclick="orderModel('Secrets de Lavandă', 280)">Comandă acest model</button>
+        </div>
+      </article>
+
+      <!-- Card 4 — Caramel Dorit -->
+      <article class="cake-card reveal">
+        <div class="cake-art cake-caramel" aria-hidden="true">
+          <div class="c-base"></div>
+          <div class="c-layer"></div>
+          <div class="c-cream"></div>
+          <div class="c-top"></div>
+          <div class="c-deco"></div>
+          <div class="c-deco2"></div>
+        </div>
+        <div class="cake-meta">
+          <h3 class="cake-name" data-i18n="showcase.c4.name">Caramel Dorit</h3>
+          <p class="cake-desc" data-i18n="showcase.c4.desc">Blat vanilie auriu, cremă caramel sărat, nuci crocante — contrastul perfect dulce-sărat.</p>
+        </div>
+        <div class="cake-footer">
+          <div class="cake-price">260 <span>lei</span></div>
+          <button class="btn btn-gold cake-order-btn" data-i18n="showcase.orderBtn" onclick="orderModel('Caramel Dorit', 260)">Comandă acest model</button>
+        </div>
+      </article>
+
+      <!-- Card 5 — Fistic Regal -->
+      <article class="cake-card reveal">
+        <div class="cake-art cake-fistic" aria-hidden="true">
+          <div class="c-base"></div>
+          <div class="c-layer"></div>
+          <div class="c-cream"></div>
+          <div class="c-top"></div>
+          <div class="c-deco"></div>
+          <div class="c-deco2"></div>
+        </div>
+        <div class="cake-meta">
+          <h3 class="cake-name" data-i18n="showcase.c5.name">Fistic Regal</h3>
+          <p class="cake-desc" data-i18n="showcase.c5.desc">Blat migdale fin, cremă de fistic intens, glazură oglindă — eleganța verde a patiseriei de lux.</p>
+        </div>
+        <div class="cake-footer">
+          <div class="cake-price">320 <span>lei</span></div>
+          <button class="btn btn-gold cake-order-btn" data-i18n="showcase.orderBtn" onclick="orderModel('Fistic Regal', 320)">Comandă acest model</button>
+        </div>
+      </article>
+
+      <!-- Card 6 — Velvet Auriu -->
+      <article class="cake-card reveal">
+        <div class="cake-art cake-velvet" aria-hidden="true">
+          <div class="c-base"></div>
+          <div class="c-layer"></div>
+          <div class="c-cream"></div>
+          <div class="c-top"></div>
+          <div class="c-deco"></div>
+          <div class="c-deco2"></div>
+        </div>
+        <div class="cake-meta">
+          <h3 class="cake-name" data-i18n="showcase.c6.name">Velvet Auriu</h3>
+          <p class="cake-desc" data-i18n="showcase.c6.desc">Red velvet clasic, cremă lemon curd vibrantă, sprinkles aurii — festiv și de neuitat.</p>
+        </div>
+        <div class="cake-footer">
+          <div class="cake-price">240 <span>lei</span></div>
+          <button class="btn btn-gold cake-order-btn" data-i18n="showcase.orderBtn" onclick="orderModel('Velvet Auriu', 240)">Comandă acest model</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONFIGURATOR
+═══════════════════════════════════════════════════════════ -->
+<section id="configurator" aria-labelledby="configTitle">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" data-i18n="config.label">Personalizare completă</p>
+      <h2 class="section-title" id="configTitle" data-i18n="config.title">Construiește-ți Tortul</h2>
+      <p class="section-subtitle" data-i18n="config.subtitle">5 pași simpli. Tu alegi fiecare detaliu — noi îl aducem la viață.</p>
+    </div>
+
+    <!-- Step progress bar -->
+    <div class="step-progress" id="stepProgress" role="list" aria-label="Pași configurator">
+      <div class="step-item step-item-wrap active" data-step="1" role="listitem">
+        <div class="step-circle active" id="sc1"><span class="step-num">1</span></div>
+        <div class="step-label" data-i18n="config.step1.label">Blat</div>
+      </div>
+      <div class="step-line" id="sl1"></div>
+      <div class="step-item step-item-wrap" data-step="2" role="listitem">
+        <div class="step-circle" id="sc2"><span class="step-num">2</span></div>
+        <div class="step-label" data-i18n="config.step2.label">Cremă</div>
+      </div>
+      <div class="step-line" id="sl2"></div>
+      <div class="step-item step-item-wrap" data-step="3" role="listitem">
+        <div class="step-circle" id="sc3"><span class="step-num">3</span></div>
+        <div class="step-label" data-i18n="config.step3.label">Toppinguri</div>
+      </div>
+      <div class="step-line" id="sl3"></div>
+      <div class="step-item step-item-wrap" data-step="4" role="listitem">
+        <div class="step-circle" id="sc4"><span class="step-num">4</span></div>
+        <div class="step-label" data-i18n="config.step4.label">Fructe</div>
+      </div>
+      <div class="step-line" id="sl4"></div>
+      <div class="step-item step-item-wrap" data-step="5" role="listitem">
+        <div class="step-circle" id="sc5"><span class="step-num">5</span></div>
+        <div class="step-label" data-i18n="config.step5.label">Design</div>
+      </div>
+    </div>
+
+    <div class="config-layout">
+      <!-- ── Controls ── -->
+      <div class="config-controls">
+
+        <!-- STEP 1: Blat -->
+        <div class="config-panel active" id="panel1">
+          <h3 class="config-panel-title" data-i18n="config.step1.title">Blat</h3>
+          <p class="config-panel-sub" data-i18n="config.step1.sub">Alege tipul de blat — baza tortului tău.</p>
+
+          <p class="option-group-label" data-i18n="config.step1.classic">Blaturi clasice (inclus)</p>
+          <div class="options-grid" id="blatClassicGrid">
+            <label class="option-tile"><input type="radio" name="blat" value="vanilie" data-color="#f5e6c8" data-cost="0" checked onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#f5e6c8;"></div><span class="option-name" data-i18n="config.blat.vanilie">Vanilie</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="ciocolata" data-color="#5c3317" data-cost="0" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#5c3317;"></div><span class="option-name" data-i18n="config.blat.ciocolata">Ciocolată</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="cacao" data-color="#3b1f0a" data-cost="0" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#3b1f0a;"></div><span class="option-name" data-i18n="config.blat.cacao">Cacao intensă</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="pandispan" data-color="#f0ddb0" data-cost="0" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#f0ddb0;"></div><span class="option-name" data-i18n="config.blat.pandispan">Pandispan</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="redvelvet" data-color="#9b1c2e" data-cost="0" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#9b1c2e;"></div><span class="option-name" data-i18n="config.blat.redvelvet">Red velvet</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step1.special">Blaturi speciale</p>
+          <div class="options-grid" id="blatSpecialGrid">
+            <label class="option-tile"><input type="radio" name="blat" value="morcovi" data-color="#d4732a" data-cost="15" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#d4732a;"></div><span class="option-name" data-i18n="config.blat.morcovi">Morcovi</span></div><span class="option-price">+15 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="nuca" data-color="#6b4c2a" data-cost="20" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#6b4c2a;"></div><span class="option-name" data-i18n="config.blat.nuca">Nucă</span></div><span class="option-price">+20 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="migdale" data-color="#c8a882" data-cost="20" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#c8a882;"></div><span class="option-name" data-i18n="config.blat.migdale">Migdale</span></div><span class="option-price">+20 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="faragluten" data-color="#e8d5a0" data-cost="20" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#e8d5a0;"></div><span class="option-name" data-i18n="config.blat.faragluten">Fără gluten</span></div><span class="option-price">+20 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="blat" value="vegan" data-color="#c5b88a" data-cost="20" onchange="onBlatChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#c5b88a;"></div><span class="option-name" data-i18n="config.blat.vegan">Vegan</span></div><span class="option-price">+20 lei</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step1.grosime">Grosime blat</p>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="grosime" value="subtire" checked onchange="onGrosimeChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><span class="option-name" data-i18n="config.blat.subtire">Subțire</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="grosime" value="gros" onchange="onGrosimeChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><span class="option-name" data-i18n="config.blat.gros">Gros</span></div><span class="option-price">+5 lei</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step1.etaje">Număr de etaje</p>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="etaje" value="1" checked onchange="onEtajeChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><span class="option-name" data-i18n="config.blat.1etaj">1 etaj</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="etaje" value="2" onchange="onEtajeChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><span class="option-name" data-i18n="config.blat.2etaje">2 etaje</span></div><span class="option-price">+40 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="etaje" value="3" onchange="onEtajeChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><span class="option-name" data-i18n="config.blat.3etaje">3+ etaje</span></div><span class="option-price">+60 lei</span></div></label>
+          </div>
+        </div>
+
+        <!-- STEP 2: Cremă -->
+        <div class="config-panel" id="panel2">
+          <h3 class="config-panel-title" data-i18n="config.step2.title">Cremă</h3>
+          <p class="config-panel-sub" data-i18n="config.step2.sub">Alege crema — sufletul tortului.</p>
+
+          <p class="option-group-label" data-i18n="config.step2.classic">Creme clasice (inclus)</p>
+          <div class="options-grid" id="cremaClassicGrid">
+            <label class="option-tile"><input type="radio" name="crema" value="frisca" data-color="#fffef5" data-cost="0" checked onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#f5f0d8; border-color:#d0c8a0;"></div><span class="option-name" data-i18n="config.crema.frisca">Frișcă</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="vanilie" data-color="#fdf3c0" data-cost="0" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#fdf3c0;"></div><span class="option-name" data-i18n="config.crema.vanilie">Cremă vanilie</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="ciocolata" data-color="#6b3520" data-cost="0" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#6b3520;"></div><span class="option-name" data-i18n="config.crema.ciocolata">Cremă ciocolată</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="cafea" data-color="#4a2c1a" data-cost="0" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#4a2c1a;"></div><span class="option-name" data-i18n="config.crema.cafea">Cremă cafea</span></div><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step2.premium">Creme premium</p>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="crema" value="mascarpone" data-color="#faf0e6" data-cost="20" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#faf0e6;"></div><span class="option-name" data-i18n="config.crema.mascarpone">Mascarpone</span></div><span class="option-price">+20 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="fistic" data-color="#7db87a" data-cost="25" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#7db87a;"></div><span class="option-name" data-i18n="config.crema.fistic">Fistic</span></div><span class="option-price">+25 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="caramel" data-color="#c9872a" data-cost="25" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#c9872a;"></div><span class="option-name" data-i18n="config.crema.caramel">Caramel sărat</span></div><span class="option-price">+25 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="lemoncurd" data-color="#e8d84a" data-cost="20" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#e8d84a;"></div><span class="option-name" data-i18n="config.crema.lemoncurd">Lemon curd</span></div><span class="option-price">+20 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="crema" value="fructepadure" data-color="#7b3f6e" data-cost="20" onchange="onCremaChange(this)"><div class="option-tile-inner"><div class="option-tile-top"><div class="option-dot" style="background:#7b3f6e;"></div><span class="option-name" data-i18n="config.crema.fructepadure">Fructe de pădure</span></div><span class="option-price">+20 lei</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step2.special">Opțiuni speciale</p>
+          <div class="check-options">
+            <div class="check-tile" id="chkExtraCrema" onclick="toggleCheck('chkExtraCrema','extraCrema')">
+              <input type="checkbox" id="cbExtraCrema">
+              <div class="check-tile-check"></div>
+              <span class="check-tile-label" data-i18n="config.crema.extra">Extra cremă — cantitate dublă</span>
+              <span class="check-tile-price">+15 lei</span>
+            </div>
+            <div class="check-tile" id="chkFaraZahar" onclick="toggleCheck('chkFaraZahar','faraZahar')">
+              <input type="checkbox" id="cbFaraZahar">
+              <div class="check-tile-check"></div>
+              <span class="check-tile-label" data-i18n="config.crema.farazahar">Fără zahăr</span>
+              <span class="check-tile-price" data-i18n="config.note">notă</span>
+            </div>
+            <div class="check-tile" id="chkVegan" onclick="toggleCheck('chkVegan','vegan')">
+              <input type="checkbox" id="cbVegan">
+              <div class="check-tile-check"></div>
+              <span class="check-tile-label" data-i18n="config.crema.vegan">Vegan</span>
+              <span class="check-tile-price" data-i18n="config.note">notă</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Toppinguri -->
+        <div class="config-panel" id="panel3">
+          <h3 class="config-panel-title" data-i18n="config.step3.title">Toppinguri</h3>
+          <p class="config-panel-sub" data-i18n="config.step3.sub">Poți alege mai multe opțiuni din fiecare categorie.</p>
+
+          <p class="option-group-label" data-i18n="config.step3.dulci">Toppinguri dulci (+5 lei)</p>
+          <div class="options-grid" id="toppingDulciGrid">
+            <label class="option-tile dulci-radio"><input type="checkbox" value="ganache" data-color="#2c1a0e" data-cat="dulci" onchange="onToppingChange(this)"><div class="option-tile-inner"><span class="radio-ind"></span><div class="option-dot" style="background:#2c1a0e;"></div><span class="option-name" data-i18n="config.topping.ganache">Ganache ciocolată</span></div></label>
+            <label class="option-tile dulci-radio"><input type="checkbox" value="glazura" data-color="#b8d4f0" data-cat="dulci" onchange="onToppingChange(this)"><div class="option-tile-inner"><span class="radio-ind"></span><div class="option-dot" style="background:#b8d4f0;"></div><span class="option-name" data-i18n="config.topping.glazura">Glazură oglindă</span></div></label>
+            <label class="option-tile dulci-radio"><input type="checkbox" value="caramel" data-color="#d4922e" data-cat="dulci" onchange="onToppingChange(this)"><div class="option-tile-inner"><span class="radio-ind"></span><div class="option-dot" style="background:#d4922e;"></div><span class="option-name" data-i18n="config.topping.caramel">Caramel</span></div></label>
+            <label class="option-tile dulci-radio"><input type="checkbox" value="ciocalba" data-color="#f5e6c8" data-cat="dulci" onchange="onToppingChange(this)"><div class="option-tile-inner"><span class="radio-ind"></span><div class="option-dot" style="background:#f5e6c8; border-color:#d0c090;"></div><span class="option-name" data-i18n="config.topping.ciocalba">Sos ciocolată albă</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step3.crocante">Toppinguri crocante (+8 lei)</p>
+          <div class="options-grid" id="toppingCrocanteGrid">
+            <label class="option-tile checkbox"><input type="checkbox" value="nuci" data-color="#8b6240" data-cat="crocante" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#8b6240;"></div><span class="option-name" data-i18n="config.topping.nuci">Nuci</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="alune" data-color="#a07850" data-cat="crocante" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#a07850;"></div><span class="option-name" data-i18n="config.topping.alune">Alune</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="migdale" data-color="#c8a882" data-cat="crocante" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#c8a882;"></div><span class="option-name" data-i18n="config.topping.migdale">Migdale</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="oreo" data-color="#2a2a2a" data-cat="crocante" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#2a2a2a;"></div><span class="option-name" data-i18n="config.topping.oreo">Oreo sfărâmat</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step3.decorative">Decorative (+3 lei)</p>
+          <div class="options-grid" id="toppingDecorGrid">
+            <label class="option-tile checkbox"><input type="checkbox" value="sprinkles" data-color="#e84060" data-cat="decorative" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background: linear-gradient(135deg,#e84060,#f5c842,#4a8af5); border:none;"></div><span class="option-name" data-i18n="config.topping.sprinkles">Sprinkles</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="fulgicioc" data-color="#5c3317" data-cat="decorative" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#5c3317;"></div><span class="option-name" data-i18n="config.topping.fulgi">Fulgi ciocolată</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="perle" data-color="#f0f0f0" data-cat="decorative" onchange="onToppingChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#f0f0f0; border-color:#c8c8c8;"></div><span class="option-name" data-i18n="config.topping.perle">Perle zahăr</span></div></label>
+          </div>
+          <p class="topping-limit-notice" id="toppingMaxNotice">Ai selectat numărul maxim de toppinguri (3)</p>
+        </div>
+
+        <!-- STEP 4: Fructe -->
+        <div class="config-panel" id="panel4">
+          <h3 class="config-panel-title" data-i18n="config.step4.title">Fructe</h3>
+          <p class="config-panel-sub" data-i18n="config.step4.sub">Fructe proaspete sau mixuri — adaugă prospeciimea preferată.</p>
+
+          <p class="option-group-label" data-i18n="config.step4.proaspete">Fructe proaspete</p>
+          <div class="options-grid" id="fructeGrid">
+            <label class="option-tile checkbox"><input type="checkbox" value="capsuni" data-color="#e8324a" data-cost="8" data-cat="fructe" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#e8324a;"></div><span class="option-name" data-i18n="config.fruct.capsuni">Căpșuni</span><span class="option-price">+8 lei</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="zmeura" data-color="#c0143c" data-cost="8" data-cat="fructe" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#c0143c;"></div><span class="option-name" data-i18n="config.fruct.zmeura">Zmeură</span><span class="option-price">+8 lei</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="afine" data-color="#4a2c8a" data-cost="8" data-cat="fructe" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#4a2c8a;"></div><span class="option-name" data-i18n="config.fruct.afine">Afine</span><span class="option-price">+8 lei</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="banane" data-color="#f5e020" data-cost="8" data-cat="fructe" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#f5e020;"></div><span class="option-name" data-i18n="config.fruct.banane">Banane</span><span class="option-price">+8 lei</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="kiwi" data-color="#5a9a2a" data-cost="10" data-cat="fructe" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#5a9a2a;"></div><span class="option-name" data-i18n="config.fruct.kiwi">Kiwi</span><span class="option-price">+10 lei</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="mango" data-color="#f5a020" data-cost="10" data-cat="fructe" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background:#f5a020;"></div><span class="option-name" data-i18n="config.fruct.mango">Mango</span><span class="option-price">+10 lei</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step4.mixuri">Mixuri</p>
+          <div class="options-grid">
+            <label class="option-tile checkbox"><input type="checkbox" value="mixpadure" data-cost="10" data-cat="mixuri" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background: linear-gradient(135deg,#c0143c,#4a2c8a);border:none;"></div><span class="option-name" data-i18n="config.fruct.padure">Fructe de pădure</span><span class="option-price">+10 lei</span></div></label>
+            <label class="option-tile checkbox"><input type="checkbox" value="mixtropical" data-cost="10" data-cat="mixuri" onchange="onFructeChange(this)"><div class="option-tile-inner"><div class="option-dot" style="background: linear-gradient(135deg,#f5a020,#5a9a2a);border:none;"></div><span class="option-name" data-i18n="config.fruct.tropical">Tropical mix</span><span class="option-price">+10 lei</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step4.placement">Plasare fructe</p>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="placement" value="deasupra" checked onchange="onPlacementChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.fruct.deasupra">Doar deasupra</span><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="placement" value="interior" onchange="onPlacementChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.fruct.interior">Doar în interior</span><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="placement" value="ambele" onchange="onPlacementChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.fruct.ambele">Ambele</span><span class="option-price">+5 lei</span></div></label>
+          </div>
+        </div>
+
+        <!-- STEP 5: Design -->
+        <div class="config-panel" id="panel5">
+          <h3 class="config-panel-title" data-i18n="config.step5.title">Design & Personalizare</h3>
+          <p class="config-panel-sub" data-i18n="config.step5.sub">Forma, culoarea și mesajul care îl fac al tău.</p>
+
+          <p class="option-group-label" data-i18n="config.step5.forma">Formă tort</p>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="forma" value="rotund" checked onchange="onFormaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.rotund">Rotund</span><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+            <label class="option-tile"><input type="radio" name="forma" value="patrat" onchange="onFormaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.patrat">Pătrat</span><span class="option-price">+10 lei</span></div></label>
+            <label class="option-tile"><input type="radio" name="forma" value="inima" onchange="onFormaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.inima">Inimă</span><span class="option-price">+10 lei</span></div></label>
+          </div>
+
+          <p class="option-group-label" data-i18n="config.step5.culoare">Culoare dominantă fondant</p>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:4px;">
+            <input type="color" class="form-input" id="culoarePicker" value="#f5e6c8" oninput="onCuloareChange(this)" style="width:80px; height:44px; padding:4px 6px;">
+            <span style="font-size:0.85rem; color:var(--brown-mid);" data-i18n="config.design.culoareHint">Alege o culoare pentru stratul exterior</span>
+          </div>
+
+          <div class="form-field" style="margin-top:20px;">
+            <label class="option-group-label" for="textPeTort" data-i18n="config.step5.text">Text pe tort (+15 lei)</label>
+            <input type="text" class="form-input" id="textPeTort" maxlength="30" placeholder="ex: La mulți ani, Maria!" oninput="onTextChange(this)" data-i18n-placeholder="config.design.textPlaceholder">
+            <span style="font-size:0.75rem; color:var(--brown-mid);" id="textCount">0/30</span>
+          </div>
+
+          <div class="check-options" style="margin-top:8px;">
+            <div class="check-tile" id="chkImagine" onclick="toggleCheck('chkImagine','imaginePrintata')">
+              <input type="checkbox" id="cbImagine">
+              <div class="check-tile-check"></div>
+              <span class="check-tile-label" data-i18n="config.design.imagine">Imagine printată pe tort</span>
+              <span class="check-tile-price">+25 lei</span>
+            </div>
+          </div>
+
+          <p class="option-group-label" style="margin-top:20px;" data-i18n="config.step5.tematica">Tematică</p>
+          <div class="options-grid options-grid-wide">
+            <label class="option-tile"><input type="radio" name="tematica" value="nunta" onchange="onTematicaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.nunta">Nuntă</span><span class="option-price included" data-i18n="config.note">notă</span></div></label>
+            <label class="option-tile"><input type="radio" name="tematica" value="ziua" onchange="onTematicaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.ziua">Zi de naștere</span><span class="option-price included" data-i18n="config.note">notă</span></div></label>
+            <label class="option-tile"><input type="radio" name="tematica" value="copii" onchange="onTematicaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.copii">Copii</span><span class="option-price included" data-i18n="config.note">notă</span></div></label>
+            <label class="option-tile"><input type="radio" name="tematica" value="corporate" onchange="onTematicaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.corporate">Corporate</span><span class="option-price included" data-i18n="config.note">notă</span></div></label>
+            <label class="option-tile"><input type="radio" name="tematica" value="fara" checked onchange="onTematicaChange(this)"><div class="option-tile-inner"><span class="option-name" data-i18n="config.design.fara">Fără tematică</span><span class="option-price included" data-i18n="config.included">inclus</span></div></label>
+          </div>
+        </div>
+
+        <!-- Step navigation buttons -->
+        <div class="step-nav">
+          <button class="btn btn-outline" id="btnPrev" onclick="prevStep()" style="display:none;" data-i18n="config.prev">Înapoi</button>
+          <div></div>
+          <button class="btn btn-gold" id="btnNext" onclick="nextStep()" data-i18n="config.next">Continuă</button>
+        </div>
+      </div>
+
+      <!-- ── Preview column ── -->
+      <div class="config-preview">
+        <div class="canvas-card">
+          <p class="canvas-card-title" data-i18n="config.preview">Previzualizare tort</p>
+          <canvas id="cakeCanvas" width="280" height="340" aria-label="Previzualizare tort configurat"></canvas>
+        </div>
+        <!-- Price summary -->
+        <div id="priceSummary">
+          <div class="price-summary-title" data-i18n="config.priceTitle">Rezumat preț</div>
+          <div id="priceLines"></div>
+          <div class="price-total">
+            <span class="price-total-label" data-i18n="config.total">Total</span>
+            <span class="price-total-value" id="priceTotal">150 <span class="price-lei">lei</span></span>
+          </div>
+          <p id="prepTimeEstimate" style="font-size:13px; font-style:italic; color:var(--brown-mid); margin-top:10px; font-family:var(--font-sans);">⏱ Timp de pregătire estimat: 2-3 zile</p>
+        </div>
+        <button class="btn btn-gold finalize-btn" onclick="finalizeWithShimmer()" data-i18n="config.finalize">Finalizează Comanda</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile price bar -->
+<div id="mobilePriceBar" aria-live="polite">
+  <div class="mobile-price-collapsed" onclick="toggleMobilePriceBar()">
+    <span style="font-size:0.85rem; font-weight:500;" data-i18n="config.total">Total</span>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span class="mobile-price-total" id="mobilePriceTotal">150 lei</span>
+      <button class="btn btn-gold" style="padding:8px 18px; font-size:0.82rem;" onclick="event.stopPropagation(); finalizeWithShimmer()" data-i18n="config.finalize">Finalizează</button>
+    </div>
+  </div>
+  <div class="mobile-price-expanded" id="mobilePriceExpanded">
+    <div id="mobilePriceLines" style="padding-top:8px;"></div>
+  </div>
+</div>
+
+<!-- Float cake preview button (mobile only) -->
+<button id="cakeFloatBtn" onclick="openCakeModal()" aria-label="Previzualizare tort">🎂</button>
+
+<!-- Cake preview modal (mobile) -->
+<div id="cakeModal" role="dialog" aria-modal="true" onclick="if(event.target===this) closeCakeModal()">
+  <div class="cake-modal-box">
+    <button class="cake-modal-close" onclick="closeCakeModal()" aria-label="Închide">✕</button>
+    <p class="canvas-card-title" data-i18n="config.preview">Previzualizare tort</p>
+    <img id="cakeModalImg" src="" alt="Previzualizare tort">
+    <div class="cake-modal-price" id="cakeModalPrice">150 lei</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ORDER FORM
+═══════════════════════════════════════════════════════════ -->
+<section id="comanda" aria-labelledby="comandaTitle">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" data-i18n="order.label">Ridicare Târgu Mureș</p>
+      <h2 class="section-title" id="comandaTitle" data-i18n="order.title">Comandă</h2>
+      <p class="section-subtitle" data-i18n="order.subtitle">Completează formularul — te contactăm în maxim 24 de ore pentru confirmare.</p>
+    </div>
+    <div class="order-layout">
+      <!-- Form -->
+      <div>
+        <form class="order-form-wrap" id="orderForm" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="fieldNume" data-i18n="order.name">Nume complet *</label>
+            <input class="form-input" type="text" id="fieldNume" required autocomplete="name" data-i18n-placeholder="order.namePlaceholder" placeholder="Maria Ionescu">
+            <span class="error-msg" id="errNume" data-i18n="order.required">Câmp obligatoriu</span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fieldTel" data-i18n="order.phone">Număr de telefon *</label>
+            <input class="form-input" type="tel" id="fieldTel" required autocomplete="tel" data-i18n-placeholder="order.phonePlaceholder" placeholder="07xx xxx xxx">
+            <span class="error-msg" id="errTel" data-i18n="order.required">Câmp obligatoriu</span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fieldEmail" data-i18n="order.email">Email *</label>
+            <input class="form-input" type="email" id="fieldEmail" required autocomplete="email" data-i18n-placeholder="order.emailPlaceholder" placeholder="email@exemplu.ro">
+            <span class="error-msg" id="errEmail" data-i18n="order.emailError">Adresă email invalidă</span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fieldData" data-i18n="order.date">Data dorită pentru ridicare *</label>
+            <input class="form-input" type="date" id="fieldData" required>
+            <span class="pickup-note" data-i18n="order.pickup">📍 Ridicare din Târgu Mureș</span>
+            <span class="error-msg" id="errData" data-i18n="order.dateError">Alegeți o dată cu minim 2 zile înainte</span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fieldMesaj" data-i18n="order.message">Mesaj adițional</label>
+            <textarea class="form-input form-textarea" id="fieldMesaj" data-i18n-placeholder="order.messagePlaceholder" placeholder="Detalii suplimentare, alergii, preferințe..."></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fieldRezumat" data-i18n="order.summary">Rezumat comandă</label>
+            <textarea class="form-input form-textarea" id="fieldRezumat" readonly style="background:var(--blush); color:var(--brown-dark); opacity:0.9;" placeholder="Completează configuratorul pentru rezumat automat..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center; padding:14px;" data-i18n="order.submit">Trimite Comanda</button>
+        </form>
+        <!-- Confirmation -->
+        <div id="orderConfirmation" hidden>
+          <div class="confirm-logo">
+            <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" width="160">
+              <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="#c97d4e" stroke-width="0.8"/>
+              <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="#c97d4e" stroke-width="0.3" stroke-dasharray="3,2"/>
+              <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="#2c1a0e" letter-spacing="1">Dulcinella</text>
+            </svg>
+          </div>
+          <h3 class="confirm-title" id="confirmTitle">Mulțumim!</h3>
+          <p class="confirm-text" id="confirmText"></p>
+          <div class="confirm-summary" id="confirmSummary"></div>
+          <p class="confirm-text" id="confirmContact"></p>
+        </div>
+      </div>
+      <!-- Info sidebar -->
+      <div class="order-info">
+        <div class="order-info-card reveal">
+          <div class="order-info-icon">🕐</div>
+          <div class="order-info-title" data-i18n="order.info1.title">Timp de preparare</div>
+          <p class="order-info-text" data-i18n="order.info1.text">Recomandam minim 2 zile înainte. Pentru torturi cu 3+ etaje sau imagine printată, ideal 4–5 zile.</p>
+        </div>
+        <div class="order-info-card reveal">
+          <div class="order-info-icon">📍</div>
+          <div class="order-info-title" data-i18n="order.info2.title">Ridicare personală</div>
+          <p class="order-info-text" data-i18n="order.info2.text">Adresa exactă ți-o comunicăm după confirmarea comenzii. Nu livrăm — tortul te așteaptă proaspăt!</p>
+        </div>
+        <div class="order-info-card reveal">
+          <div class="order-info-icon">💳</div>
+          <div class="order-info-title" data-i18n="order.info3.title">Plată la ridicare</div>
+          <p class="order-info-text" data-i18n="order.info3.text">Cash sau card la ridicare. Prețul final se confirmă după discuția telefonică.</p>
+        </div>
+        <div class="order-info-card reveal">
+          <div class="order-info-icon">📞</div>
+          <div class="order-info-title" data-i18n="order.info4.title">Contact direct</div>
+          <p class="order-info-text"><a href="tel:+40743677026" class="phone-link">0743 677 026</a><br><a href="mailto:fe.dulcinella@gmail.com" style="color:var(--gold);">fe.dulcinella@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════════════════ -->
+<section id="faq" aria-labelledby="faqTitle">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" data-i18n="faq.label">Întrebări frecvente</p>
+      <h2 class="section-title" id="faqTitle" data-i18n="faq.title">FAQ</h2>
+    </div>
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" data-i18n="faq.q1">Cu cât timp în avans trebuie să comand?<span class="faq-icon">+</span></button>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner" data-i18n="faq.a1">Recomandăm minim 2 zile înainte de data dorită. Pentru torturi cu 3+ etaje sau imagine printată, ideal 4–5 zile.</div></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" data-i18n="faq.q2">Pot modifica comanda după ce am trimis-o?<span class="faq-icon">+</span></button>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner" data-i18n="faq.a2">Da, ne poți contacta telefonic la <a href="tel:+40743677026" class="phone-link">0743 677 026</a> în maxim 24h de la comandă.</div></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" data-i18n="faq.q3">Unde ridic tortul?<span class="faq-icon">+</span></button>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner" data-i18n="faq.a3">Din Târgu Mureș. Adresa exactă ți-o comunicăm după confirmarea comenzii.</div></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" data-i18n="faq.q4">Cum plătesc?<span class="faq-icon">+</span></button>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner" data-i18n="faq.a4">Plata se face la ridicare, cash sau card.</div></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" data-i18n="faq.q5">Torturile sunt proaspete?<span class="faq-icon">+</span></button>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner" data-i18n="faq.a5">Da, fiecare tort este pregătit proaspăt, special pentru comanda ta.</div></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" data-i18n="faq.q6">Aveți opțiuni pentru alergii sau diete speciale?<span class="faq-icon">+</span></button>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner" data-i18n="faq.a6">Da — oferim variante fără gluten, vegan și fără zahăr. Menționează în comandă.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" width="150" aria-label="Dulcinella">
+          <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="rgba(201,125,78,0.7)" stroke-width="0.8"/>
+          <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="rgba(201,125,78,0.5)" stroke-width="0.3" stroke-dasharray="3,2"/>
+          <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="rgba(253,246,238,0.9)" letter-spacing="1">Dulcinella</text>
+        </svg>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-tagline" data-i18n="footer.tagline">Făcut cu dragoste în Târgu Mureș</p>
+      <div class="footer-contact">
+        <a href="tel:+40743677026" class="phone-link">0743 677 026</a>
+        <span class="footer-sep">·</span>
+        <a href="mailto:fe.dulcinella@gmail.com">fe.dulcinella@gmail.com</a>
+        <span class="footer-sep">·</span>
+        <span data-i18n="footer.location">Târgu Mureș, România</span>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copy">© 2025 Dulcinella. Toate drepturile rezervate.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ──────────────────────────────────────────────────────────────
+   TRANSLATIONS
+────────────────────────────────────────────────────────────── */
+const TRANSLATIONS = {
+  ro: {
+    nav: { modele:'Modele', configurator:'Configurator', comanda:'Comandă', faq:'FAQ' },
+    hero: {
+      eyebrow: 'Patiserie Artizanală · Târgu Mureș',
+      title:   'Fiecare felie,\no poveste a ta',
+      sub:     'Torturi custom made, create de tine, coapte de noi.',
+      cta1:    'Creează-ți tortul',
+      cta2:    'Vezi modele'
+    },
+    showcase: {
+      label:    'Colecție exclusivă',
+      title:    'Modele Semnătură',
+      subtitle: 'Creații definitorii Dulcinella — fiecare o capodoperă artizanală, gata de comandat.',
+      orderBtn: 'Comandă acest model',
+      c1: { name:'Trandafir de Vară', desc:'Frișcă batută, căpșuni proaspete, glazură roz delicată — răcoare și eleganță în fiecare felie.' },
+      c2: { name:'Negresă Regală',    desc:'Ciocolată dark intensă, ganache catifelat, perle de zahăr aurii — pentru iubitorii de intensitate.' },
+      c3: { name:'Secrets de Lavandă',desc:'Cremă mascarpone, afine proaspete, blat vanilie parfumat — o experiență aromată și rafinată.' },
+      c4: { name:'Caramel Dorit',     desc:'Blat vanilie auriu, cremă caramel sărat, nuci crocante — contrastul perfect dulce-sărat.' },
+      c5: { name:'Fistic Regal',      desc:'Blat migdale fin, cremă de fistic intens, glazură oglindă — eleganța verde a patiseriei de lux.' },
+      c6: { name:'Velvet Auriu',      desc:'Red velvet clasic, cremă lemon curd vibrantă, sprinkles aurii — festiv și de neuitat.' }
+    },
+    config: {
+      label:'Personalizare completă', title:'Construiește-ți Tortul',
+      subtitle:'5 pași simpli. Tu alegi fiecare detaliu — noi îl aducem la viață.',
+      prev:'Înapoi', next:'Continuă', finalize:'Finalizează Comanda',
+      preview:'Previzualizare tort', priceTitle:'Rezumat preț', total:'Total',
+      included:'inclus', note:'notă',
+      categories: { base:'Preț de bază', blat:'🎂 Blat', crema:'🍦 Cremă', toppinguri:'🍫 Toppinguri', fructe:'🍓 Fructe', design:'🎨 Design', subtotal:'Subtotal:' },
+      step1: { label:'Blat', title:'Blat', sub:'Alege tipul de blat — baza tortului tău.', classic:'Blaturi clasice (inclus)', special:'Blaturi speciale', grosime:'Grosime blat', etaje:'Număr de etaje' },
+      step2: { label:'Cremă', title:'Cremă', sub:'Alege crema — sufletul tortului.', classic:'Creme clasice (inclus)', premium:'Creme premium', special:'Opțiuni speciale' },
+      step3: { label:'Toppinguri', title:'Toppinguri', sub:'Poți alege mai multe opțiuni din fiecare categorie.', dulci:'Toppinguri dulci (+5 lei)', crocante:'Toppinguri crocante (+8 lei)', decorative:'Decorative (+3 lei)' },
+      step4: { label:'Fructe', title:'Fructe', sub:'Fructe proaspete sau mixuri — adaugă prospeciimea preferată.', proaspete:'Fructe proaspete', mixuri:'Mixuri', placement:'Plasare fructe' },
+      step5: { label:'Design', title:'Design & Personalizare', sub:'Forma, culoarea și mesajul care îl fac al tău.', forma:'Formă tort', culoare:'Culoare dominantă fondant', text:'Text pe tort (+15 lei)', tematica:'Tematică' },
+      prepTime:     'Timp de pregătire estimat: 2-3 zile',
+      prepTimeLong: 'Timp de pregătire estimat: 4-5 zile',
+      toppingMax:   'Ai selectat numărul maxim de toppinguri (3)',
+      blat: { vanilie:'Vanilie', ciocolata:'Ciocolată', cacao:'Cacao intensă', pandispan:'Pandispan', redvelvet:'Red velvet', morcovi:'Morcovi', nuca:'Nucă', migdale:'Migdale', faragluten:'Fără gluten', vegan:'Vegan', subtire:'Subțire', gros:'Gros', '1etaj':'1 etaj', '2etaje':'2 etaje', '3etaje':'3+ etaje' },
+      crema: { frisca:'Frișcă', vanilie:'Cremă vanilie', ciocolata:'Cremă ciocolată', cafea:'Cremă cafea', mascarpone:'Mascarpone', fistic:'Fistic', caramel:'Caramel sărat', lemoncurd:'Lemon curd', fructepadure:'Fructe de pădure', extra:'Extra cremă — cantitate dublă', farazahar:'Fără zahăr', vegan:'Vegan' },
+      topping: { ganache:'Ganache ciocolată', glazura:'Glazură oglindă', caramel:'Caramel', ciocalba:'Sos ciocolată albă', nuci:'Nuci', alune:'Alune', migdale:'Migdale', oreo:'Oreo sfărâmat', sprinkles:'Sprinkles', fulgi:'Fulgi ciocolată', perle:'Perle zahăr' },
+      fruct: { capsuni:'Căpșuni', zmeura:'Zmeură', afine:'Afine', banane:'Banane', kiwi:'Kiwi', mango:'Mango', padure:'Fructe de pădure', tropical:'Tropical mix', deasupra:'Doar deasupra', interior:'Doar în interior', ambele:'Ambele' },
+      design: { rotund:'Rotund', patrat:'Pătrat', inima:'Inimă', culoareHint:'Alege o culoare pentru stratul exterior', textPlaceholder:'ex: La mulți ani, Maria!', imagine:'Imagine printată pe tort', nunta:'Nuntă', ziua:'Zi de naștere', copii:'Copii', corporate:'Corporate', fara:'Fără tematică' }
+    },
+    order: {
+      label:'Ridicare Târgu Mureș', title:'Comandă',
+      subtitle:'Completează formularul — te contactăm în maxim 24 de ore pentru confirmare.',
+      name:'Nume complet *', namePlaceholder:'Maria Ionescu',
+      phone:'Număr de telefon *', phonePlaceholder:'07xx xxx xxx',
+      email:'Email *', emailPlaceholder:'email@exemplu.ro',
+      date:'Data dorită pentru ridicare *',
+      message:'Mesaj adițional', messagePlaceholder:'Detalii suplimentare, alergii, preferințe...',
+      summary:'Rezumat comandă',
+      submit:'Trimite Comanda',
+      pickup:'📍 Ridicare din Târgu Mureș',
+      required:'Câmp obligatoriu',
+      emailError:'Adresă email invalidă',
+      dateError:'Alegeți o dată cu minim 2 zile înainte',
+      info1: { title:'Timp de preparare', text:'Recomandăm minim 2 zile înainte. Pentru torturi cu 3+ etaje sau imagine printată, ideal 4–5 zile.' },
+      info2: { title:'Ridicare personală', text:'Adresa exactă ți-o comunicăm după confirmarea comenzii. Nu livrăm — tortul te așteaptă proaspăt!' },
+      info3: { title:'Plată la ridicare', text:'Cash sau card la ridicare. Prețul final se confirmă după discuția telefonică.' },
+      info4: { title:'Contact direct', text:'' }
+    },
+    faq: {
+      label:'Întrebări frecvente', title:'FAQ',
+      q1:'Cu cât timp în avans trebuie să comand?',
+      a1:'Recomandăm minim 2 zile înainte de data dorită. Pentru torturi cu 3+ etaje sau imagine printată, ideal 4–5 zile.',
+      q2:'Pot modifica comanda după ce am trimis-o?',
+      a2:'Da, ne poți contacta telefonic la <a href="tel:+40743677026" class="phone-link">0743 677 026</a> în maxim 24h de la comandă.',
+      q3:'Unde ridic tortul?',
+      a3:'Din Târgu Mureș. Adresa exactă ți-o comunicăm după confirmarea comenzii.',
+      q4:'Cum plătesc?',
+      a4:'Plata se face la ridicare, cash sau card.',
+      q5:'Torturile sunt proaspete?',
+      a5:'Da, fiecare tort este pregătit proaspăt, special pentru comanda ta.',
+      q6:'Aveți opțiuni pentru alergii sau diete speciale?',
+      a6:'Da — oferim variante fără gluten, vegan și fără zahăr. Menționează în comandă.'
+    },
+    footer: {
+      tagline:'Făcut cu dragoste în Târgu Mureș',
+      location:'Târgu Mureș, România',
+      copy:'© 2025 Dulcinella. Toate drepturile rezervate.'
+    }
+  },
+
+  en: {
+    nav: { modele:'Models', configurator:'Configurator', comanda:'Order', faq:'FAQ' },
+    hero: {
+      eyebrow: 'Artisan Patisserie · Târgu Mureș',
+      title:   'Every slice,\nyour story',
+      sub:     'Custom-made cakes, designed by you, baked by us.',
+      cta1:    'Create your cake',
+      cta2:    'View models'
+    },
+    showcase: {
+      label:    'Exclusive collection',
+      title:    'Signature Models',
+      subtitle: 'Dulcinella\'s defining creations — each an artisan masterpiece, ready to order.',
+      orderBtn: 'Order this model',
+      c1: { name:'Summer Rose',      desc:'Whipped cream, fresh strawberries, delicate pink glaze — freshness and elegance in every slice.' },
+      c2: { name:'Royal Dark',       desc:'Intense dark chocolate, velvety ganache, golden sugar pearls — for lovers of intensity.' },
+      c3: { name:'Lavender Secrets', desc:'Mascarpone cream, fresh blueberries, fragrant vanilla sponge — an aromatic and refined experience.' },
+      c4: { name:'Desired Caramel',  desc:'Golden vanilla sponge, salted caramel cream, crunchy walnuts — the perfect sweet-salty contrast.' },
+      c5: { name:'Royal Pistachio',  desc:'Fine almond sponge, intense pistachio cream, mirror glaze — the green elegance of luxury patisserie.' },
+      c6: { name:'Golden Velvet',    desc:'Classic red velvet, vibrant lemon curd cream, golden sprinkles — festive and unforgettable.' }
+    },
+    config: {
+      label:'Full customization', title:'Build Your Cake',
+      subtitle:'5 simple steps. You choose every detail — we bring it to life.',
+      prev:'Back', next:'Continue', finalize:'Finalize Order',
+      preview:'Cake preview', priceTitle:'Price summary', total:'Total',
+      included:'included', note:'note',
+      categories: { base:'Base price', blat:'🎂 Sponge', crema:'🍦 Cream', toppinguri:'🍫 Toppings', fructe:'🍓 Fruits', design:'🎨 Design', subtotal:'Subtotal:' },
+      step1: { label:'Sponge', title:'Sponge', sub:'Choose the sponge type — the base of your cake.', classic:'Classic sponges (included)', special:'Special sponges', grosime:'Sponge thickness', etaje:'Number of tiers' },
+      step2: { label:'Cream', title:'Cream', sub:'Choose the cream — the soul of your cake.', classic:'Classic creams (included)', premium:'Premium creams', special:'Special options' },
+      step3: { label:'Toppings', title:'Toppings', sub:'You can choose multiple options from each category.', dulci:'Sweet toppings (+5 lei)', crocante:'Crunchy toppings (+8 lei)', decorative:'Decorative (+3 lei)' },
+      step4: { label:'Fruits', title:'Fruits', sub:'Fresh fruits or mixes — add your favorite freshness.', proaspete:'Fresh fruits', mixuri:'Mixes', placement:'Fruit placement' },
+      step5: { label:'Design', title:'Design & Personalization', sub:'The shape, color and message that make it yours.', forma:'Cake shape', culoare:'Dominant fondant color', text:'Text on cake (+15 lei)', tematica:'Theme' },
+      prepTime:     'Estimated preparation time: 2–3 days',
+      prepTimeLong: 'Estimated preparation time: 4–5 days',
+      toppingMax:   'You have selected the maximum number of toppings (3)',
+      blat: { vanilie:'Vanilla', ciocolata:'Chocolate', cacao:'Intense cocoa', pandispan:'Plain sponge', redvelvet:'Red velvet', morcovi:'Carrot', nuca:'Walnut', migdale:'Almond', faragluten:'Gluten-free', vegan:'Vegan', subtire:'Thin', gros:'Thick', '1etaj':'1 tier', '2etaje':'2 tiers', '3etaje':'3+ tiers' },
+      crema: { frisca:'Whipped cream', vanilie:'Vanilla cream', ciocolata:'Chocolate cream', cafea:'Coffee cream', mascarpone:'Mascarpone', fistic:'Pistachio', caramel:'Salted caramel', lemoncurd:'Lemon curd', fructepadure:'Forest berries', extra:'Extra cream — double quantity', farazahar:'Sugar-free', vegan:'Vegan' },
+      topping: { ganache:'Chocolate ganache', glazura:'Mirror glaze', caramel:'Caramel', ciocalba:'White chocolate sauce', nuci:'Walnuts', alune:'Hazelnuts', migdale:'Almonds', oreo:'Crushed Oreo', sprinkles:'Sprinkles', fulgi:'Chocolate flakes', perle:'Sugar pearls' },
+      fruct: { capsuni:'Strawberries', zmeura:'Raspberries', afine:'Blueberries', banane:'Bananas', kiwi:'Kiwi', mango:'Mango', padure:'Forest berries', tropical:'Tropical mix', deasupra:'On top only', interior:'Inside only', ambele:'Both' },
+      design: { rotund:'Round', patrat:'Square', inima:'Heart', culoareHint:'Choose a color for the outer layer', textPlaceholder:'e.g.: Happy Birthday, Maria!', imagine:'Printed image on cake', nunta:'Wedding', ziua:'Birthday', copii:'Children', corporate:'Corporate', fara:'No theme' }
+    },
+    order: {
+      label:'Pickup — Târgu Mureș', title:'Order',
+      subtitle:'Fill out the form — we\'ll contact you within 24 hours for confirmation.',
+      name:'Full name *', namePlaceholder:'Maria Ionescu',
+      phone:'Phone number *', phonePlaceholder:'07xx xxx xxx',
+      email:'Email *', emailPlaceholder:'email@example.com',
+      date:'Desired pickup date *',
+      message:'Additional message', messagePlaceholder:'Additional details, allergies, preferences...',
+      summary:'Order summary',
+      submit:'Place Order',
+      pickup:'📍 Pickup from Târgu Mureș',
+      required:'Required field',
+      emailError:'Invalid email address',
+      dateError:'Please choose a date at least 2 days ahead',
+      info1: { title:'Preparation time', text:'We recommend at least 2 days in advance. For cakes with 3+ tiers or a printed image, ideally 4–5 days.' },
+      info2: { title:'Personal pickup', text:'We\'ll share the exact address after confirming your order. No delivery — your cake waits fresh!' },
+      info3: { title:'Payment at pickup', text:'Cash or card at pickup. The final price is confirmed after the phone call.' },
+      info4: { title:'Direct contact', text:'' }
+    },
+    faq: {
+      label:'Frequently asked questions', title:'FAQ',
+      q1:'How far in advance should I order?',
+      a1:'We recommend at least 2 days before the desired date. For cakes with 3+ tiers or a printed image, ideally 4–5 days.',
+      q2:'Can I modify my order after submitting it?',
+      a2:'Yes, you can contact us by phone at <a href="tel:+40743677026" class="phone-link">0743 677 026</a> within 24 hours of placing the order.',
+      q3:'Where do I pick up the cake?',
+      a3:'From Târgu Mureș. We\'ll share the exact address after confirming your order.',
+      q4:'How do I pay?',
+      a4:'Payment is made at pickup, cash or card.',
+      q5:'Are the cakes fresh?',
+      a5:'Yes, every cake is prepared fresh, specially for your order.',
+      q6:'Do you have options for allergies or special diets?',
+      a6:'Yes — we offer gluten-free, vegan and sugar-free options. Please mention it in your order.'
+    },
+    footer: {
+      tagline:'Made with love in Târgu Mureș',
+      location:'Târgu Mureș, Romania',
+      copy:'© 2025 Dulcinella. All rights reserved.'
+    }
+  }
+};
+
+/* ──────────────────────────────────────────────────────────────
+   LANGUAGE SYSTEM
+────────────────────────────────────────────────────────────── */
+// Resolve dot-path key like "hero.title" from TRANSLATIONS object
+function getT(obj, path) {
+  return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : null), obj);
+}
+
+let currentLang = localStorage.getItem('dulcinella_lang') || 'ro';
+
+function setLang(l) {
+  currentLang = l;
+  localStorage.setItem('dulcinella_lang', l);
+  applyTranslations();
+  updateLangBtns();
+  renderPriceSummary(); // re-render price labels in new language
+}
+
+function applyTranslations() {
+  const T = TRANSLATIONS[currentLang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = getT(T, key);
+    if (val === null) return;
+    // Buttons inside FAQ questions need special handling (keep icon)
+    if (el.classList.contains('faq-question')) {
+      // update only text node (first child), keep icon span
+      const icon = el.querySelector('.faq-icon');
+      el.textContent = val;
+      if (icon) el.appendChild(icon);
+    } else {
+      el.textContent = val;
+    }
+  });
+  // Placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const val = getT(T, key);
+    if (val) el.placeholder = val;
+  });
+  document.documentElement.lang = currentLang;
+}
+
+function updateLangBtns() {
+  ['langRo','langRoM'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('active', currentLang === 'ro');
+  });
+  ['langEn','langEnM'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('active', currentLang === 'en');
+  });
+}
+
+/* ──────────────────────────────────────────────────────────────
+   CONFIGURATOR STATE
+────────────────────────────────────────────────────────────── */
+const BASE_PRICE = 150;
+
+const state = {
+  currentStep: 1,
+  blat:     { type: 'vanilie',  color: '#f5e6c8', extraCost: 0, grosime: 'subtire', etaje: 1 },
+  crema:    { type: 'frisca',   color: '#fffef5', extraCost: 0, extraCrema: false, faraZahar: false, vegan: false },
+  toppinguri: { dulci: [], crocante: [], decorative: [] },
+  fructe:   { lista: [], mixuri: [], placement: 'deasupra' },
+  design:   { forma: 'rotund', culoare: null, text: '', imaginePrintata: false, tematica: 'fara' }
+};
+
+// Check state flags map for toggleCheck()
+const checkStateMap = {
+  extraCrema:      () => state.crema.extraCrema,
+  faraZahar:       () => state.crema.faraZahar,
+  vegan:           () => state.crema.vegan,
+  imaginePrintata: () => state.design.imaginePrintata
+};
+
+/* ──────────────────────────────────────────────────────────────
+   PRICE CALCULATION
+────────────────────────────────────────────────────────────── */
+function calcPrice() {
+  let total = BASE_PRICE;
+  total += state.blat.extraCost;
+  if (state.blat.grosime === 'gros') total += 5;
+  if (state.blat.etaje === 2) total += 40;
+  if (state.blat.etaje >= 3) total += 60;
+  total += state.crema.extraCost;
+  if (state.crema.extraCrema) total += 15;
+  total += state.toppinguri.dulci.length * 5;
+  total += state.toppinguri.crocante.length * 8;
+  total += state.toppinguri.decorative.length * 3;
+  state.fructe.lista.forEach(f => { total += (f.cost || 8); });
+  state.fructe.mixuri.forEach(m => { total += (m.cost || 10); });
+  if (state.fructe.placement === 'ambele') total += 5;
+  if (state.design.forma !== 'rotund') total += 10;
+  if (state.design.text.trim().length > 0) total += 15;
+  if (state.design.imaginePrintata) total += 25;
+  return total;
+}
+
+function buildPriceLines() {
+  const T = TRANSLATIONS[currentLang];
+  const cats = [];
+
+  // Blat
+  const blatItems = [];
+  if (state.blat.extraCost > 0)
+    blatItems.push({ label: getT(T,'config.blat.'+state.blat.type)||state.blat.type, value: state.blat.extraCost });
+  if (state.blat.grosime === 'gros')
+    blatItems.push({ label: getT(T,'config.blat.gros')||'Gros', value: 5 });
+  if (state.blat.etaje === 2)
+    blatItems.push({ label: getT(T,'config.blat.2etaje')||'2 etaje', value: 40 });
+  if (state.blat.etaje >= 3)
+    blatItems.push({ label: getT(T,'config.blat.3etaje')||'3+ etaje', value: 60 });
+  if (blatItems.length)
+    cats.push({ key:'blat', label: getT(T,'config.categories.blat'), items: blatItems, subtotal: blatItems.reduce((s,i)=>s+i.value,0) });
+
+  // Cremă
+  const cremaItems = [];
+  if (state.crema.extraCost > 0)
+    cremaItems.push({ label: getT(T,'config.crema.'+state.crema.type)||state.crema.type, value: state.crema.extraCost });
+  if (state.crema.extraCrema)
+    cremaItems.push({ label: getT(T,'config.crema.extra')||'Extra cremă', value: 15 });
+  if (cremaItems.length)
+    cats.push({ key:'crema', label: getT(T,'config.categories.crema'), items: cremaItems, subtotal: cremaItems.reduce((s,i)=>s+i.value,0) });
+
+  // Toppinguri
+  const toppingItems = [];
+  state.toppinguri.dulci.forEach(t => toppingItems.push({ label: getT(T,'config.topping.'+t.value)||t.value, value: 5 }));
+  state.toppinguri.crocante.forEach(t => toppingItems.push({ label: getT(T,'config.topping.'+t.value)||t.value, value: 8 }));
+  state.toppinguri.decorative.forEach(t => toppingItems.push({ label: getT(T,'config.topping.'+t.value)||t.value, value: 3 }));
+  if (toppingItems.length)
+    cats.push({ key:'toppinguri', label: getT(T,'config.categories.toppinguri'), items: toppingItems, subtotal: toppingItems.reduce((s,i)=>s+i.value,0) });
+
+  // Fructe
+  const fructeItems = [];
+  state.fructe.lista.forEach(f => fructeItems.push({ label: getT(T,'config.fruct.'+f.value)||f.value, value: f.cost||8 }));
+  state.fructe.mixuri.forEach(m => fructeItems.push({ label: getT(T,'config.fruct.'+m.value.replace('mix',''))||m.value, value: 10 }));
+  if (state.fructe.placement === 'ambele')
+    fructeItems.push({ label: getT(T,'config.fruct.ambele')||'Ambele', value: 5 });
+  if (fructeItems.length)
+    cats.push({ key:'fructe', label: getT(T,'config.categories.fructe'), items: fructeItems, subtotal: fructeItems.reduce((s,i)=>s+i.value,0) });
+
+  // Design
+  const designItems = [];
+  if (state.design.forma !== 'rotund')
+    designItems.push({ label: getT(T,'config.design.'+state.design.forma)||state.design.forma, value: 10 });
+  if (state.design.text.trim().length > 0)
+    designItems.push({ label: getT(T,'config.step5.text')||'Text pe tort', value: 15 });
+  if (state.design.imaginePrintata)
+    designItems.push({ label: getT(T,'config.design.imagine')||'Imagine printată', value: 25 });
+  if (designItems.length)
+    cats.push({ key:'design', label: getT(T,'config.categories.design'), items: designItems, subtotal: designItems.reduce((s,i)=>s+i.value,0) });
+
+  return { base: BASE_PRICE, categories: cats };
+}
+
+function renderPriceSummary() {
+  const total = calcPrice();
+  const { base, categories } = buildPriceLines();
+  const T = TRANSLATIONS[currentLang];
+  const subtotalLabel = getT(T,'config.categories.subtotal') || 'Subtotal:';
+  const baseLabel     = getT(T,'config.categories.base')     || 'Preț de bază';
+
+  function buildHTML(cats) {
+    let html = `<div class="price-line base"><span>${baseLabel}</span><span>${base} lei</span></div>`;
+    cats.forEach(cat => {
+      html += `<div class="price-category-header">${cat.label}</div>`;
+      cat.items.forEach(item => {
+        html += `<div class="price-category-item"><span>${item.label}</span><span>+${item.value} lei</span></div>`;
+      });
+      html += `<div class="price-category-subtotal"><span>${subtotalLabel}</span><span>+${cat.subtotal} lei</span></div>`;
+    });
+    return html;
+  }
+
+  const container = document.getElementById('priceLines');
+  if (container) container.innerHTML = buildHTML(categories);
+
+  // Animate total
+  const totalEl = document.getElementById('priceTotal');
+  if (totalEl) {
+    totalEl.innerHTML = `${total} <span class="price-lei">lei</span>`;
+    totalEl.classList.remove('price-flash');
+    void totalEl.offsetWidth; // reflow
+    totalEl.classList.add('price-flash');
+  }
+
+  // Mobile bar
+  const mobileTotal = document.getElementById('mobilePriceTotal');
+  if (mobileTotal) mobileTotal.textContent = `${total} lei`;
+  const mobileLinesEl = document.getElementById('mobilePriceLines');
+  if (mobileLinesEl) mobileLinesEl.innerHTML = buildHTML(categories);
+
+  // Prep time estimate
+  const isLong = state.blat.etaje >= 3
+    || state.design.imaginePrintata
+    || state.toppinguri.dulci.some(t => t.value === 'glazura')
+    || state.crema.type === 'fistic'
+    || state.crema.type === 'caramel';
+  const prepEl = document.getElementById('prepTimeEstimate');
+  if (prepEl) {
+    const key = isLong ? 'config.prepTimeLong' : 'config.prepTime';
+    const txt = getT(TRANSLATIONS[currentLang], key);
+    if (txt) prepEl.textContent = '⏱ ' + txt;
+  }
+
+  // Order summary textarea
+  updateOrderSummary();
+}
+
+function updateOrderSummary() {
+  const el = document.getElementById('fieldRezumat');
+  if (!el || el.hasAttribute('data-prefilled')) return;
+  const { categories } = buildPriceLines();
+  const total = calcPrice();
+  const parts = ['— Dulcinella Custom Cake —'];
+  categories.forEach(cat => {
+    cat.items.forEach(item => parts.push(`${item.label}: +${item.value} lei`));
+  });
+  parts.push(`\nTotal: ${total} lei`);
+  el.value = parts.join('\n');
+}
+
+/* ──────────────────────────────────────────────────────────────
+   CANVAS DRAWING ENGINE
+────────────────────────────────────────────────────────────── */
+const canvas  = document.getElementById('cakeCanvas');
+const ctx     = canvas.getContext('2d');
+
+// Color helpers
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return [r, g, b];
+}
+function rgbToHex(r, g, b) {
+  const clamp = v => Math.max(0, Math.min(255, Math.round(v)));
+  return '#' + [clamp(r),clamp(g),clamp(b)].map(v => v.toString(16).padStart(2,'0')).join('');
+}
+function darkenRgb([r,g,b], f) { return [r*f, g*f, b*f]; }
+function lightenRgb([r,g,b], f) { return [Math.min(255,r*f), Math.min(255,g*f), Math.min(255,b*f)]; }
+function rgbStr([r,g,b], a=1) {
+  const c = v => Math.max(0,Math.min(255,Math.round(v)));
+  return a<1 ? `rgba(${c(r)},${c(g)},${c(b)},${a})` : `rgb(${c(r)},${c(g)},${c(b)})`;
+}
+function lerpVal(a, b, t) { return a + (b - a) * t; }
+function lerpRgb(a, b, t) { return [lerpVal(a[0],b[0],t), lerpVal(a[1],b[1],t), lerpVal(a[2],b[2],t)]; }
+function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+// Animation state for lerp
+const anim = {
+  running:  false,
+  start:    0,
+  duration: 500,
+  fromBlat:   [245, 230, 200],
+  toBlat:     [245, 230, 200],
+  currentBlat:[245, 230, 200],
+  fromCrema:  [255, 254, 245],
+  toCrema:    [255, 254, 245],
+  currentCrema:[255, 254, 245],
+  fromTopping: null,
+  toTopping:   null,
+  currentTopping: null
+};
+
+function startColorAnim() {
+  anim.fromBlat    = [...anim.currentBlat];
+  anim.toBlat      = hexToRgb(state.blat.color);
+  anim.fromCrema   = [...anim.currentCrema];
+  anim.toCrema     = hexToRgb(state.crema.color);
+  const firstTopping = state.toppinguri.dulci[0] || state.toppinguri.crocante[0];
+  anim.fromTopping = anim.currentTopping ? [...anim.currentTopping] : null;
+  anim.toTopping   = firstTopping ? hexToRgb(firstTopping.color) : null;
+  anim.start = performance.now();
+  if (!anim.running) { anim.running = true; requestAnimationFrame(animLoop); }
+}
+
+function animLoop(now) {
+  const elapsed = now - anim.start;
+  const t = easeInOut(Math.min(elapsed / anim.duration, 1));
+  anim.currentBlat  = lerpRgb(anim.fromBlat,  anim.toBlat,  t);
+  anim.currentCrema = lerpRgb(anim.fromCrema, anim.toCrema, t);
+  if (anim.toTopping) {
+    const from = anim.fromTopping || anim.toTopping;
+    anim.currentTopping = lerpRgb(from, anim.toTopping, t);
+  } else {
+    anim.currentTopping = null;
+  }
+  drawCake();
+  if (t < 1) requestAnimationFrame(animLoop);
+  else { anim.running = false; }
+}
+
+// Draw a filled ellipse
+function drawEllipse(x, y, rx, ry, color, alpha=1) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI*2);
+  ctx.fillStyle = alpha < 1 ? rgbStr(hexToRgb(color), alpha) : color;
+  ctx.fill();
+}
+
+// Draw one cylinder layer (the main workhorse)
+function drawCylinder(cx, yTop, w, layerH, blatRgb, cremaRgb, isCremaLayer) {
+  const rgb   = isCremaLayer ? cremaRgb : blatRgb;
+  const rx    = w / 2;
+  const ry    = w * 0.22;
+
+  // Side face — left-to-right gradient
+  const sideGrad = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+  sideGrad.addColorStop(0,   rgbStr(darkenRgb(rgb, 0.70)));
+  sideGrad.addColorStop(0.45, rgbStr(rgb));
+  sideGrad.addColorStop(0.75, rgbStr(rgb));
+  sideGrad.addColorStop(1,   rgbStr(lightenRgb(rgb, 1.20)));
+
+  ctx.beginPath();
+  // top ellipse arc (left half, going right)
+  ctx.ellipse(cx, yTop, rx, ry, 0, Math.PI, 0);
+  // right side down
+  ctx.lineTo(cx + rx, yTop + layerH);
+  // bottom ellipse arc (right half, going left)
+  ctx.ellipse(cx, yTop + layerH, rx, ry, 0, 0, Math.PI);
+  ctx.closePath();
+  ctx.fillStyle = sideGrad;
+  ctx.fill();
+
+  // Top ellipse — lightened
+  ctx.beginPath();
+  ctx.ellipse(cx, yTop, rx, ry, 0, 0, Math.PI*2);
+  ctx.fillStyle = rgbStr(lightenRgb(rgb, 1.25));
+  ctx.fill();
+
+  // Fondant tint (design step, 60% opacity over blat color on top layer)
+  if (!isCremaLayer && state.design.culoare) {
+    const fondRgb = hexToRgb(state.design.culoare);
+    // Side tint
+    ctx.beginPath();
+    ctx.ellipse(cx, yTop, rx, ry, 0, Math.PI, 0);
+    ctx.lineTo(cx + rx, yTop + layerH);
+    ctx.ellipse(cx, yTop + layerH, rx, ry, 0, 0, Math.PI);
+    ctx.closePath();
+    ctx.fillStyle = rgbStr(fondRgb, 0.60);
+    ctx.fill();
+    // Top tint
+    ctx.beginPath();
+    ctx.ellipse(cx, yTop, rx, ry, 0, 0, Math.PI*2);
+    ctx.fillStyle = rgbStr(fondRgb, 0.45);
+    ctx.fill();
+  }
+}
+
+// Draw square tier — same pipeline as drawCylinder, rounded-rect top face
+function drawSquareTier(cx, yTop, w, layerH, rgb, isCremaLayer) {
+  const rx = w / 2;
+  const ry = w * 0.22;
+  const r  = 14;
+
+  // Rounded-rect path helper (task spec, r=14 corners)
+  function rrPath(topY) {
+    const x = cx - rx, y = topY - ry, pw = rx * 2, h = ry * 2;
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + pw - r, y);
+    ctx.arcTo(x + pw, y,      x + pw, y + r,      r);
+    ctx.lineTo(x + pw, y + h - r);
+    ctx.arcTo(x + pw, y + h,  x + pw - r, y + h,  r);
+    ctx.lineTo(x + r, y + h);
+    ctx.arcTo(x,      y + h,  x, y + h - r,        r);
+    ctx.lineTo(x, y + r);
+    ctx.arcTo(x,      y,      x + r, y,             r);
+    ctx.closePath();
+  }
+
+  // Side gradient — identical to drawCylinder
+  const sideGrad = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+  sideGrad.addColorStop(0,    rgbStr(darkenRgb(rgb, 0.70)));
+  sideGrad.addColorStop(0.45, rgbStr(rgb));
+  sideGrad.addColorStop(0.75, rgbStr(rgb));
+  sideGrad.addColorStop(1,    rgbStr(lightenRgb(rgb, 1.20)));
+
+  // Side face — rounded-rect extrusion (upper half at yTop → right wall → lower half at yTop+layerH)
+  ctx.beginPath();
+  ctx.moveTo(cx - rx, yTop);
+  ctx.arcTo(cx - rx, yTop - ry, cx - rx + r, yTop - ry, r);
+  ctx.lineTo(cx + rx - r, yTop - ry);
+  ctx.arcTo(cx + rx, yTop - ry, cx + rx, yTop, r);
+  ctx.lineTo(cx + rx, yTop + layerH);
+  ctx.arcTo(cx + rx, yTop + layerH + ry, cx + rx - r, yTop + layerH + ry, r);
+  ctx.lineTo(cx - rx + r, yTop + layerH + ry);
+  ctx.arcTo(cx - rx, yTop + layerH + ry, cx - rx, yTop + layerH, r);
+  ctx.closePath();
+  ctx.fillStyle = sideGrad;
+  ctx.fill();
+
+  // Top face — rounded rect
+  rrPath(yTop);
+  ctx.fillStyle = rgbStr(lightenRgb(rgb, 1.25));
+  ctx.fill();
+
+  // Gold outline on top face
+  rrPath(yTop);
+  ctx.strokeStyle = '#c97d4e';
+  ctx.lineWidth   = 1.5;
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(0,0,0,0)';
+
+  // Fondant tint — identical pattern to drawCylinder
+  if (!isCremaLayer && state.design.culoare) {
+    const fondRgb = hexToRgb(state.design.culoare);
+    // Side tint
+    ctx.beginPath();
+    ctx.moveTo(cx - rx, yTop);
+    ctx.arcTo(cx - rx, yTop - ry, cx - rx + r, yTop - ry, r);
+    ctx.lineTo(cx + rx - r, yTop - ry);
+    ctx.arcTo(cx + rx, yTop - ry, cx + rx, yTop, r);
+    ctx.lineTo(cx + rx, yTop + layerH);
+    ctx.arcTo(cx + rx, yTop + layerH + ry, cx + rx - r, yTop + layerH + ry, r);
+    ctx.lineTo(cx - rx + r, yTop + layerH + ry);
+    ctx.arcTo(cx - rx, yTop + layerH + ry, cx - rx, yTop + layerH, r);
+    ctx.closePath();
+    ctx.fillStyle = rgbStr(fondRgb, 0.60);
+    ctx.fill();
+    // Top tint
+    rrPath(yTop);
+    ctx.fillStyle = rgbStr(fondRgb, 0.45);
+    ctx.fill();
+  }
+}
+
+// Draw heart tier — same pipeline as drawCylinder, heart bezier top face
+function drawHeartTier(cx, yTop, w, layerH, rgb, isCremaLayer = false) {
+  const rx = w / 2;
+  const ry = w * 0.22;
+
+  // Heart path helper (task spec bezier)
+  function heartPath(topY) {
+    ctx.beginPath();
+    ctx.moveTo(cx, topY + ry);
+    ctx.bezierCurveTo(cx - rx*0.1, topY + ry*0.5, cx - rx, topY + ry*0.5, cx - rx, topY);
+    ctx.bezierCurveTo(cx - rx, topY - ry, cx, topY - ry*0.5, cx, topY - ry*0.1);
+    ctx.bezierCurveTo(cx, topY - ry*0.5, cx + rx, topY - ry, cx + rx, topY);
+    ctx.bezierCurveTo(cx + rx, topY + ry*0.5, cx + rx*0.1, topY + ry*0.5, cx, topY + ry);
+    ctx.closePath();
+  }
+
+  // Side gradient — identical to drawCylinder
+  const sideGrad = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+  sideGrad.addColorStop(0,    rgbStr(darkenRgb(rgb, 0.70)));
+  sideGrad.addColorStop(0.45, rgbStr(rgb));
+  sideGrad.addColorStop(0.75, rgbStr(rgb));
+  sideGrad.addColorStop(1,    rgbStr(lightenRgb(rgb, 1.20)));
+
+  // Side face — heart extrusion (upper bumps at yTop → right wall → lower tip at yTop+layerH)
+  ctx.beginPath();
+  ctx.moveTo(cx - rx, yTop);
+  ctx.bezierCurveTo(cx - rx, yTop - ry, cx, yTop - ry*0.5, cx, yTop - ry*0.1);
+  ctx.bezierCurveTo(cx, yTop - ry*0.5, cx + rx, yTop - ry, cx + rx, yTop);
+  ctx.lineTo(cx + rx, yTop + layerH);
+  ctx.bezierCurveTo(cx + rx, yTop + layerH + ry*0.5, cx + rx*0.1, yTop + layerH + ry*0.5, cx, yTop + layerH + ry);
+  ctx.bezierCurveTo(cx - rx*0.1, yTop + layerH + ry*0.5, cx - rx, yTop + layerH + ry*0.5, cx - rx, yTop + layerH);
+  ctx.closePath();
+  ctx.fillStyle = sideGrad;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(0,0,0,0)';
+
+  // Top face — heart bezier
+  heartPath(yTop);
+  ctx.fillStyle = rgbStr(lightenRgb(rgb, 1.25));
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(0,0,0,0)';
+
+  // Gold outline on top face — only explicit stroke
+  heartPath(yTop);
+  ctx.strokeStyle = '#c97d4e';
+  ctx.lineWidth   = 1.5;
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(0,0,0,0)';
+
+  // Fondant tint — identical pattern to drawCylinder
+  if (!isCremaLayer && state.design.culoare) {
+    const fondRgb = hexToRgb(state.design.culoare);
+    // Side tint
+    ctx.beginPath();
+    ctx.moveTo(cx - rx, yTop);
+    ctx.bezierCurveTo(cx - rx, yTop - ry, cx, yTop - ry*0.5, cx, yTop - ry*0.1);
+    ctx.bezierCurveTo(cx, yTop - ry*0.5, cx + rx, yTop - ry, cx + rx, yTop);
+    ctx.lineTo(cx + rx, yTop + layerH);
+    ctx.bezierCurveTo(cx + rx, yTop + layerH + ry*0.5, cx + rx*0.1, yTop + layerH + ry*0.5, cx, yTop + layerH + ry);
+    ctx.bezierCurveTo(cx - rx*0.1, yTop + layerH + ry*0.5, cx - rx, yTop + layerH + ry*0.5, cx - rx, yTop + layerH);
+    ctx.closePath();
+    ctx.fillStyle = rgbStr(fondRgb, 0.60);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0)';
+    // Top tint
+    heartPath(yTop);
+    ctx.fillStyle = rgbStr(fondRgb, 0.45);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0)';
+  }
+}
+
+// Draw smooth organic drips
+function drawDrips(cx, yTop, rx, ry, toppingRgb) {
+  const dripCount = 7;
+  const seed = (state.toppinguri.dulci.length + state.toppinguri.crocante.length);
+  for (let i = 0; i < dripCount; i++) {
+    // Deterministic drip positions (no Math.random per frame)
+    const baseAngle = (i / dripCount) * Math.PI; // front half only
+    const angle = baseAngle + 0.15;
+    const startX = cx + Math.cos(angle) * rx * 0.9;
+    const startY = yTop + Math.sin(angle) * ry;
+    const dripLen = 18 + ((i * 7 + seed * 3) % 18);
+    const sway    = Math.cos(i * 2.1) * 5;
+
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.bezierCurveTo(
+      startX + sway * 0.6, startY + dripLen * 0.35,
+      startX + sway * 0.3, startY + dripLen * 0.7,
+      startX + sway * 0.1, startY + dripLen
+    );
+    ctx.strokeStyle = rgbStr(toppingRgb, 0.92);
+    ctx.lineWidth = 4 + ((i*3)%3);
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Teardrop end
+    ctx.beginPath();
+    ctx.ellipse(startX + sway * 0.1, startY + dripLen, 3, 4, 0, 0, Math.PI*2);
+    ctx.fillStyle = rgbStr(darkenRgb(toppingRgb, 0.88));
+    ctx.fill();
+  }
+}
+
+// Draw cream rosette
+function drawRosette(x, y, cremaRgb) {
+  const baseColor = rgbStr(lightenRgb(cremaRgb, 1.15));
+  const darkColor = rgbStr(darkenRgb(cremaRgb, 0.82));
+  for (let i = 5; i >= 1; i--) {
+    const r = i * 1.8;
+    const angle = (i * Math.PI * 2) / 6;
+    ctx.beginPath();
+    ctx.arc(x + Math.cos(angle) * r * 0.4, y + Math.sin(angle) * r * 0.4,
+            r, angle, angle + Math.PI * 1.6);
+    ctx.strokeStyle = i % 2 === 0 ? baseColor : darkColor;
+    ctx.lineWidth = 1.8;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+  // Center dot
+  ctx.beginPath();
+  ctx.arc(x, y, 2, 0, Math.PI*2);
+  ctx.fillStyle = rgbStr(lightenRgb(cremaRgb, 1.3));
+  ctx.fill();
+}
+
+// Draw fruits scattered on top ellipse
+function drawFruitsOnTop(cx, yTop, rx, ry) {
+  const fruits = state.fructe.lista;
+  if (fruits.length === 0) return;
+  const positions = [
+    {x: cx,           y: yTop},
+    {x: cx+rx*0.25,   y: yTop+ry*0.2},
+    {x: cx-rx*0.25,   y: yTop+ry*0.2},
+    {x: cx+rx*0.15,   y: yTop-ry*0.25},
+    {x: cx-rx*0.15,   y: yTop-ry*0.25}
+  ];
+  fruits.slice(0, 5).forEach((f, i) => {
+    const pos = positions[i % positions.length];
+    const fRgb = hexToRgb(f.color);
+    ctx.beginPath();
+    ctx.ellipse(pos.x, pos.y, 6, 5, 0, 0, Math.PI*2);
+    ctx.fillStyle = rgbStr(fRgb);
+    ctx.fill();
+    // Highlight
+    ctx.beginPath();
+    ctx.ellipse(pos.x - 1.5, pos.y - 1.5, 2, 1.5, -0.5, 0, Math.PI*2);
+    ctx.fillStyle = rgbStr(lightenRgb(fRgb, 1.4), 0.6);
+    ctx.fill();
+  });
+}
+
+// Draw decorative ring of emoji on top ellipse
+function drawDecorativeRing(emoji, cx, topY, rx, ry, count, ringRadius, fontSize) {
+  ctx.font = (fontSize || 11) + 'px serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    ctx.fillText(emoji, cx + Math.cos(angle) * rx * ringRadius, topY + Math.sin(angle) * ry * ringRadius);
+  }
+}
+
+// Draw mix icon with colored circle background
+function drawMixIcon(emoji, bgColor, x, y) {
+  ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2);
+  ctx.fillStyle = bgColor; ctx.globalAlpha = 0.85; ctx.fill();
+  ctx.globalAlpha = 1; ctx.font = '20px serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(emoji, x, y);
+}
+
+// Draw sprinkles on top (legacy wrapper)
+function drawSprinkles(cx, yTop, rx, ry) {
+  drawDecorativeRing('🎊', cx, yTop, rx, ry, 12, 0.65);
+}
+
+// Main draw function
+function drawCake() {
+  const W = canvas.width;
+  const H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const blatRgb  = anim.currentBlat;
+  const cremaRgb = anim.currentCrema;
+  const blatHex  = rgbToHex(...blatRgb);
+  const cremaHex = rgbToHex(...cremaRgb);
+  const forma    = state.design.forma;
+  const etaje    = state.blat.etaje;
+
+  // Cake dimensions
+  const cakeW     = Math.min(210, W - 40);
+  const cx        = W / 2;
+  const layerH    = state.blat.grosime === 'gros' ? 38 : 28;
+  const cremaH    = 10;
+  const blatLayers = etaje === 1 ? 2 : etaje === 2 ? 4 : 6;
+  const totalH    = blatLayers * layerH + (blatLayers - 1) * cremaH;
+  const yStart    = H - 40;
+
+  // Shadow
+  const shadow = ctx.createRadialGradient(cx, yStart + 6, 4, cx, yStart + 6, cakeW*0.6);
+  shadow.addColorStop(0,   'rgba(44,26,14,0.18)');
+  shadow.addColorStop(1,   'rgba(44,26,14,0)');
+  ctx.beginPath();
+  ctx.ellipse(cx, yStart + 8, cakeW * 0.52, 12, 0, 0, Math.PI*2);
+  ctx.fillStyle = shadow;
+  ctx.fill();
+
+  // Draw layers from bottom to top
+  let yPos = yStart;
+  for (let i = blatLayers - 1; i >= 0; i--) {
+    yPos -= layerH;
+    const isLast = i === 0;
+
+    if (forma === 'rotund') {
+      drawCylinder(cx, yPos, cakeW, layerH, blatRgb, blatRgb, false);
+    } else if (forma === 'patrat') {
+      drawSquareTier(cx, yPos, cakeW * 0.9, layerH, blatRgb, false);
+    } else if (forma === 'inima') {
+      drawHeartTier(cx, yPos, cakeW, layerH, blatRgb);
+    }
+
+    // Interior fruit stripe (cross-section hint)
+    if (state.fructe.lista.length > 0 &&
+        (state.fructe.placement === 'interior' || state.fructe.placement === 'ambele') && i % 2 === 0) {
+      const fRgb = hexToRgb(state.fructe.lista[0].color);
+      ctx.beginPath();
+      ctx.ellipse(cx, yPos + layerH*0.5, cakeW*0.35, 3, 0, 0, Math.PI*2);
+      ctx.fillStyle = rgbStr(fRgb, 0.55);
+      ctx.fill();
+    }
+
+    // Cream band between layers
+    if (i > 0) {
+      yPos -= cremaH;
+      if (forma === 'rotund') {
+        drawCylinder(cx, yPos, cakeW + 4, cremaH, cremaRgb, cremaRgb, true);
+      } else if (forma === 'patrat') {
+        drawSquareTier(cx, yPos, cakeW * 0.9 + 4, cremaH, cremaRgb, true);
+      } else {
+        drawHeartTier(cx, yPos, cakeW + 4, cremaH, cremaRgb, true);
+      }
+    }
+  }
+
+  const topY = yPos; // top of cake
+
+  // Toppings — drips
+  const firstDulce = state.toppinguri.dulci[0];
+  if (firstDulce) {
+    const tRgb = anim.currentTopping || hexToRgb(firstDulce.color);
+    if (forma === 'rotund') {
+      drawDrips(cx, topY, cakeW/2, cakeW*0.22, tRgb);
+    } else if (forma === 'patrat') {
+      // Evenly spaced drips along straight bottom edge of rounded rect
+      const w2 = cakeW * 0.9, rx2 = w2 / 2, ry2 = w2 * 0.22, r2 = 14;
+      const edgeLen = rx2 * 2 - 2 * r2;
+      const seed2 = (state.toppinguri.dulci.length + state.toppinguri.crocante.length);
+      for (let i = 0; i < 7; i++) {
+        const startX = (cx - rx2 + r2) + ((i + 0.5) / 7) * edgeLen;
+        const startY = topY + ry2;
+        const dripLen = 18 + ((i * 7 + seed2 * 3) % 18);
+        const sway    = Math.cos(i * 2.1) * 5;
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.bezierCurveTo(
+          startX + sway * 0.6, startY + dripLen * 0.35,
+          startX + sway * 0.3, startY + dripLen * 0.7,
+          startX + sway * 0.1, startY + dripLen
+        );
+        ctx.strokeStyle = rgbStr(tRgb, 0.92);
+        ctx.lineWidth   = 4 + ((i * 3) % 3);
+        ctx.lineCap     = 'round';
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(0,0,0,0)';
+        ctx.beginPath();
+        ctx.ellipse(startX + sway * 0.1, startY + dripLen, 3, 4, 0, 0, Math.PI * 2);
+        ctx.fillStyle = rgbStr(darkenRgb(tRgb, 0.88));
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(0,0,0,0)';
+      }
+    } else if (forma === 'inima') {
+      // Distribute 7 drips along lower heart contour (3 right + 1 bottom + 3 left)
+      const rx5 = cakeW / 2, ry5 = cakeW * 0.22;
+      const seed3 = (state.toppinguri.dulci.length + state.toppinguri.crocante.length);
+      const heartDrips = [];
+      // Right lower bezier: (cx+rx5, topY) → P1=(cx+rx5, topY+ry5*0.5) P2=(cx+rx5*0.1, topY+ry5*0.5) → (cx, topY+ry5)
+      for (let j = 0; j < 3; j++) {
+        const t = (j + 1) / 4, mt = 1 - t;
+        heartDrips.push({
+          x: mt*mt*mt*(cx+rx5) + 3*mt*mt*t*(cx+rx5) + 3*mt*t*t*(cx+rx5*0.1) + t*t*t*cx,
+          y: mt*mt*mt*topY     + 3*mt*mt*t*(topY+ry5*0.5) + 3*mt*t*t*(topY+ry5*0.5) + t*t*t*(topY+ry5)
+        });
+      }
+      // Bottom point
+      heartDrips.push({ x: cx, y: topY + ry5 });
+      // Left lower bezier: (cx, topY+ry5) → P1=(cx-rx5*0.1, topY+ry5*0.5) P2=(cx-rx5, topY+ry5*0.5) → (cx-rx5, topY)
+      for (let j = 0; j < 3; j++) {
+        const t = (j + 1) / 4, mt = 1 - t;
+        heartDrips.push({
+          x: mt*mt*mt*cx + 3*mt*mt*t*(cx-rx5*0.1) + 3*mt*t*t*(cx-rx5) + t*t*t*(cx-rx5),
+          y: mt*mt*mt*(topY+ry5) + 3*mt*mt*t*(topY+ry5*0.5) + 3*mt*t*t*(topY+ry5*0.5) + t*t*t*topY
+        });
+      }
+      heartDrips.forEach((pt, i) => {
+        const dripLen = 18 + ((i * 7 + seed3 * 3) % 18);
+        const sway    = Math.cos(i * 2.1) * 5;
+        ctx.beginPath();
+        ctx.moveTo(pt.x, pt.y);
+        ctx.bezierCurveTo(
+          pt.x + sway * 0.6, pt.y + dripLen * 0.35,
+          pt.x + sway * 0.3, pt.y + dripLen * 0.7,
+          pt.x + sway * 0.1, pt.y + dripLen
+        );
+        ctx.strokeStyle = rgbStr(tRgb, 0.92);
+        ctx.lineWidth   = 4 + ((i * 3) % 3);
+        ctx.lineCap     = 'round';
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.ellipse(pt.x + sway * 0.1, pt.y + dripLen, 3, 4, 0, 0, Math.PI * 2);
+        ctx.fillStyle = rgbStr(darkenRgb(tRgb, 0.88));
+        ctx.fill();
+      });
+    }
+    // Topping top pool
+    ctx.beginPath();
+    if (forma === 'rotund') {
+      ctx.ellipse(cx, topY, cakeW/2, cakeW*0.22, 0, 0, Math.PI*2);
+    } else if (forma === 'patrat') {
+      const rx3 = cakeW * 0.45, ry3 = cakeW * 0.198, r3 = 14;
+      const x3 = cx - rx3, y3 = topY - ry3, pw3 = rx3 * 2, h3 = ry3 * 2;
+      ctx.moveTo(x3 + r3, y3);
+      ctx.lineTo(x3 + pw3 - r3, y3);
+      ctx.arcTo(x3 + pw3, y3,      x3 + pw3, y3 + r3,      r3);
+      ctx.lineTo(x3 + pw3, y3 + h3 - r3);
+      ctx.arcTo(x3 + pw3, y3 + h3,  x3 + pw3 - r3, y3 + h3,  r3);
+      ctx.lineTo(x3 + r3, y3 + h3);
+      ctx.arcTo(x3,       y3 + h3,  x3, y3 + h3 - r3,        r3);
+      ctx.lineTo(x3, y3 + r3);
+      ctx.arcTo(x3,       y3,       x3 + r3, y3,              r3);
+      ctx.closePath();
+    } else if (forma === 'inima') {
+      const rx4 = cakeW / 2, ry4 = cakeW * 0.22;
+      ctx.moveTo(cx, topY + ry4);
+      ctx.bezierCurveTo(cx - rx4*0.1, topY + ry4*0.5, cx - rx4, topY + ry4*0.5, cx - rx4, topY);
+      ctx.bezierCurveTo(cx - rx4, topY - ry4, cx, topY - ry4*0.5, cx, topY - ry4*0.1);
+      ctx.bezierCurveTo(cx, topY - ry4*0.5, cx + rx4, topY - ry4, cx + rx4, topY);
+      ctx.bezierCurveTo(cx + rx4, topY + ry4*0.5, cx + rx4*0.1, topY + ry4*0.5, cx, topY + ry4);
+      ctx.closePath();
+    }
+    ctx.fillStyle = rgbStr(tRgb, 0.85);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0)';
+
+    // Mirror glaze shine
+    if (state.toppinguri.dulci.includes(d => d.value === 'glazura') ||
+        firstDulce.value === 'glazura') {
+      ctx.beginPath();
+      ctx.ellipse(cx - cakeW*0.06, topY - cakeW*0.04, cakeW*0.22, cakeW*0.07, -0.4, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,0.28)';
+      ctx.fill();
+    }
+  }
+
+  // Clip icons to heart contour (heart shape only)
+  if (forma === 'inima') {
+    const hRx = cakeW / 2 * 0.82, hRy = cakeW * 0.22 * 0.82;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(cx, topY + hRy);
+    ctx.bezierCurveTo(cx - hRx*0.1, topY + hRy*0.5, cx - hRx, topY + hRy*0.5, cx - hRx, topY);
+    ctx.bezierCurveTo(cx - hRx, topY - hRy, cx, topY - hRy*0.5, cx, topY - hRy*0.1);
+    ctx.bezierCurveTo(cx, topY - hRy*0.5, cx + hRx, topY - hRy, cx + hRx, topY);
+    ctx.bezierCurveTo(cx + hRx, topY + hRy*0.5, cx + hRx*0.1, topY + hRy*0.5, cx, topY + hRy);
+    ctx.closePath();
+    ctx.clip();
+  }
+
+  // Rosettes around top edge
+  if (state.toppinguri.dulci.length > 0 || state.toppinguri.crocante.length > 0) {
+    const rCount = 6;
+    for (let i = 0; i < rCount; i++) {
+      const a = (i / rCount) * Math.PI;
+      const rx2 = cakeW / 2;
+      const ry2 = cakeW * 0.22;
+      const rx3 = cx + Math.cos(a) * rx2 * 0.72;
+      const ry3 = topY + Math.sin(a) * ry2 * 0.7;
+      drawRosette(rx3, ry3, cremaRgb);
+    }
+  }
+
+  // Fruits on top
+  if (state.fructe.lista.length > 0 &&
+      (state.fructe.placement === 'deasupra' || state.fructe.placement === 'ambele')) {
+    drawFruitsOnTop(cx, topY, cakeW/2 * 0.75, cakeW * 0.16);
+  }
+
+  // Mixuri fructe on top
+  if (state.fructe.mixuri.length > 0 &&
+      (state.fructe.placement === 'deasupra' || state.fructe.placement === 'ambele')) {
+    const mrx = cakeW / 2;
+    const hp = state.fructe.mixuri.some(m => m.value === 'mixpadure');
+    const ht = state.fructe.mixuri.some(m => m.value === 'mixtropical');
+    if (hp && ht) {
+      drawMixIcon('🍇', '#7b3f6e', cx - mrx * 0.2, topY);
+      drawMixIcon('🍍', '#f5a020', cx + mrx * 0.2, topY);
+    } else if (hp) { drawMixIcon('🍇', '#7b3f6e', cx, topY); }
+    else if (ht)   { drawMixIcon('🍍', '#f5a020', cx, topY); }
+  }
+
+  // Decorative ring (sprinkles / fulgi / perle) — unified
+  const decSel = state.toppinguri.decorative;
+  const ringRadii = [0.65, 0.48, 0.55];
+  decSel.forEach((d, i) => {
+    const rr = decSel.length > 1 ? (ringRadii[i] !== undefined ? ringRadii[i] : 0.65) : (d.value === 'fulgicioc' ? 0.6 : 0.65);
+    const count = d.value === 'fulgicioc' ? 10 : 12;
+    const fontSize = (d.value === 'fulgicioc' || d.value === 'perle') ? 10 : 11;
+    const emoji = d.value === 'sprinkles' ? '🎊' : d.value === 'fulgicioc' ? '🍫' : '⚪';
+    drawDecorativeRing(emoji, cx, topY, cakeW / 2, cakeW * 0.22, count, rr, fontSize);
+  });
+
+  // Crocante toppings on top (outer ring rx*0.5 → rx*0.8)
+  const crocanteSel = state.toppinguri.crocante;
+  if (crocanteSel.length > 0) {
+    const rx = cakeW / 2;
+    const ry = cakeW * 0.22;
+    const crocantePositions = [
+      {x: cx+rx*0.62, y: topY+ry*0.2},
+      {x: cx-rx*0.62, y: topY+ry*0.2},
+      {x: cx+rx*0.52, y: topY-ry*0.28},
+      {x: cx-rx*0.52, y: topY-ry*0.28}
+    ];
+    const crocanteEmoji = { nuci: '🥜', alune: '🌰', migdale: '🤍', oreo: '🍪' };
+    ctx.font = '16px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    crocanteSel.forEach((t, i) => {
+      const pos = crocantePositions[i % crocantePositions.length];
+      ctx.fillText(crocanteEmoji[t.value] || '🥜', pos.x, pos.y);
+    });
+  }
+
+  // Text on top (curved along top ellipse)
+  if (state.design.text.trim().length > 0 && forma === 'rotund') {
+    const text = state.design.text.trim();
+    const textRx = cakeW / 2 * 0.72;
+    const textRy = cakeW * 0.16;
+    ctx.font = '9px DM Sans, sans-serif';
+    ctx.fillStyle = '#2c1a0e';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const totalAngle = Math.PI * 0.8;
+    const startAngle = -totalAngle / 2;
+    text.split('').forEach((ch, i) => {
+      const angle = startAngle + (i / Math.max(text.length - 1, 1)) * totalAngle;
+      const tx = cx + Math.cos(angle) * textRx;
+      const ty = topY + Math.sin(angle) * textRy;
+      ctx.save();
+      ctx.translate(tx, ty);
+      ctx.rotate(angle + Math.PI / 2);
+      ctx.fillText(ch, 0, 0);
+      ctx.restore();
+    });
+  }
+
+  // End heart clip region
+  if (forma === 'inima') {
+    ctx.restore();
+  }
+
+}
+
+/* ──────────────────────────────────────────────────────────────
+   CONFIGURATOR EVENT HANDLERS
+────────────────────────────────────────────────────────────── */
+function onBlatChange(el) {
+  state.blat.type      = el.value;
+  state.blat.color     = el.dataset.color;
+  state.blat.extraCost = parseInt(el.dataset.cost) || 0;
+  startColorAnim();
+  renderPriceSummary();
+}
+function onGrosimeChange(el) {
+  state.blat.grosime = el.value;
+  drawCake();
+  renderPriceSummary();
+}
+function onEtajeChange(el) {
+  state.blat.etaje = parseInt(el.value);
+  drawCake();
+  renderPriceSummary();
+}
+function onCremaChange(el) {
+  state.crema.type      = el.value;
+  state.crema.color     = el.dataset.color;
+  state.crema.extraCost = parseInt(el.dataset.cost) || 0;
+  startColorAnim();
+  renderPriceSummary();
+}
+function toggleCheck(tileId, stateKey) {
+  const tile = document.getElementById(tileId);
+  if (!tile) return;
+  const isChecked = tile.classList.contains('checked');
+  tile.classList.toggle('checked', !isChecked);
+  // Map tileId/stateKey to state
+  if (stateKey === 'extraCrema')     state.crema.extraCrema     = !isChecked;
+  if (stateKey === 'faraZahar')      state.crema.faraZahar      = !isChecked;
+  if (stateKey === 'vegan')          state.crema.vegan          = !isChecked;
+  if (stateKey === 'imaginePrintata')state.design.imaginePrintata = !isChecked;
+  renderPriceSummary();
+}
+function onToppingChange(el) {
+  const cat   = el.dataset.cat;
+  const val   = el.value;
+  const color = el.dataset.color;
+  const arr   = state.toppinguri[cat];
+  if (cat === 'dulci') {
+    if (el.checked) {
+      // Dulci counts as 1 regardless — only block if adding fresh dulci to a full set
+      const wouldBe = 1 + state.toppinguri.crocante.length + state.toppinguri.decorative.length;
+      if (state.toppinguri.dulci.length === 0 && wouldBe > 3) { el.checked = false; return; }
+      // Deselect other dulci checkboxes (radio behavior)
+      document.querySelectorAll('#toppingDulciGrid input').forEach(inp => { if (inp !== el) inp.checked = false; });
+      state.toppinguri.dulci = [{ value: val, color }];
+    } else {
+      state.toppinguri.dulci = [];
+    }
+  } else {
+    if (el.checked) {
+      // Block if already at 3 (dulci counts as 1)
+      const total = (state.toppinguri.dulci.length > 0 ? 1 : 0) + state.toppinguri.crocante.length + state.toppinguri.decorative.length;
+      if (total >= 3) { el.checked = false; return; }
+      if (!arr.find(t => t.value === val)) arr.push({ value: val, color });
+    } else {
+      const idx = arr.findIndex(t => t.value === val);
+      if (idx !== -1) arr.splice(idx, 1);
+    }
+  }
+  // Enforce max 3 UI feedback (dulci counts as 1)
+  const total = (state.toppinguri.dulci.length > 0 ? 1 : 0) + state.toppinguri.crocante.length + state.toppinguri.decorative.length;
+  document.querySelectorAll('#panel3 .option-tile.checkbox, #panel3 .option-tile.dulci-radio').forEach(tile => {
+    const input = tile.querySelector('input[type="checkbox"]');
+    if (!input) return;
+    // Dulci tiles are never disabled when a dulci is already selected (switching allowed)
+    const isDulci = input.dataset.cat === 'dulci';
+    const isDulciSwitch = isDulci && state.toppinguri.dulci.length > 0;
+    tile.classList.toggle('topping-disabled', total >= 3 && !input.checked && !isDulciSwitch);
+  });
+  const notice = document.getElementById('toppingMaxNotice');
+  if (notice) {
+    notice.classList.toggle('visible', total >= 3);
+    const txt = getT(TRANSLATIONS[currentLang], 'config.toppingMax');
+    if (txt) notice.textContent = txt;
+  }
+  // Update anim target
+  const fd = state.toppinguri.dulci[0] || state.toppinguri.crocante[0];
+  if (fd) { anim.toTopping = hexToRgb(fd.color); }
+  else     { anim.toTopping = null; anim.currentTopping = null; }
+  startColorAnim();
+  renderPriceSummary();
+}
+function onFructeChange(el) {
+  const cat  = el.dataset.cat;
+  const val  = el.value;
+  const cost = parseInt(el.dataset.cost) || 10;
+  const color= el.dataset.color;
+  const arr  = cat === 'fructe' ? state.fructe.lista : state.fructe.mixuri;
+  if (el.checked) {
+    if (!arr.find(f => f.value === val)) arr.push({ value: val, cost, color: color||'#c97d4e' });
+  } else {
+    const idx = arr.findIndex(f => f.value === val);
+    if (idx !== -1) arr.splice(idx, 1);
+  }
+  drawCake();
+  renderPriceSummary();
+}
+function onPlacementChange(el) {
+  state.fructe.placement = el.value;
+  drawCake();
+  renderPriceSummary();
+}
+function onFormaChange(el) {
+  state.design.forma = el.value;
+  drawCake();
+  renderPriceSummary();
+}
+function onCuloareChange(el) {
+  state.design.culoare = el.value;
+  drawCake();
+}
+function onTextChange(el) {
+  state.design.text = el.value;
+  const counter = document.getElementById('textCount');
+  if (counter) counter.textContent = `${el.value.length}/30`;
+  drawCake();
+  renderPriceSummary();
+}
+function onTematicaChange(el) {
+  state.design.tematica = el.value;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   STEP NAVIGATION
+────────────────────────────────────────────────────────────── */
+function goToStep(n) {
+  const old = state.currentStep;
+  state.currentStep = n;
+
+  // Panels
+  document.querySelectorAll('.config-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel' + n);
+  if (panel) panel.classList.add('active');
+
+  // Step circles
+  for (let i = 1; i <= 5; i++) {
+    const circle = document.getElementById('sc' + i);
+    const item   = circle ? circle.closest('.step-item-wrap') : null;
+    const line   = document.getElementById('sl' + i);
+    if (!circle) continue;
+    circle.classList.remove('active', 'done');
+    if (item) item.classList.remove('active');
+    if (i < n)  { circle.classList.add('done');   if (line) line.classList.add('done'); }
+    if (i === n) { circle.classList.add('active'); if (item) item.classList.add('active'); }
+    if (i > n)  { if (line) line.classList.remove('done'); }
+  }
+
+  // Prev/Next buttons
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  if (btnPrev) btnPrev.style.display = n > 1 ? 'inline-flex' : 'none';
+  if (btnNext) {
+    const T = TRANSLATIONS[currentLang];
+    if (n === 5) {
+      btnNext.textContent = getT(T,'config.finalize') || 'Finalizează Comanda';
+      btnNext.onclick = finalizeWithShimmer;
+    } else {
+      btnNext.textContent = getT(T,'config.next') || 'Continuă';
+      btnNext.onclick = nextStep;
+    }
+  }
+}
+
+function nextStep() {
+  if (state.currentStep < 5) goToStep(state.currentStep + 1);
+  else scrollToOrder();
+}
+function prevStep() {
+  if (state.currentStep > 1) goToStep(state.currentStep - 1);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SCROLL HELPERS
+────────────────────────────────────────────────────────────── */
+function scrollToOrder() {
+  document.getElementById('comanda').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function finalizeWithShimmer() {
+  const shimmerCanvas = document.getElementById('cakeCanvas');
+  if (!shimmerCanvas) { scrollToOrder(); return; }
+  const sCtx = shimmerCanvas.getContext('2d');
+  const cw = shimmerCanvas.width;
+  const ch = shimmerCanvas.height;
+  const startTime = performance.now();
+  const duration  = 800;
+  function animShimmer(now) {
+    const elapsed = now - startTime;
+    const t = Math.min(elapsed / duration, 1);
+    const alpha = t < 0.5 ? t * 1.4 : (1 - t) * 1.4;
+    drawCake();
+    const grad = sCtx.createRadialGradient(cw / 2, ch / 2, 0, cw / 2, ch / 2, Math.max(cw, ch) * 0.65);
+    grad.addColorStop(0, `rgba(201,125,78,${(0.6 * alpha).toFixed(3)})`);
+    grad.addColorStop(1, 'rgba(201,125,78,0)');
+    sCtx.fillStyle = grad;
+    sCtx.fillRect(0, 0, cw, ch);
+    if (t < 1) {
+      requestAnimationFrame(animShimmer);
+    } else {
+      drawCake();
+      scrollToOrder();
+    }
+  }
+  requestAnimationFrame(animShimmer);
+}
+
+// Showcase "Comandă acest model" — pre-fills summary and scrolls to form
+function orderModel(name, price) {
+  const el = document.getElementById('fieldRezumat');
+  if (el) {
+    el.value = `Model: ${name} — ${price} lei\n(Tort de semnătură Dulcinella)`;
+    el.setAttribute('data-prefilled', '1');
+  }
+  scrollToOrder();
+}
+
+/* ──────────────────────────────────────────────────────────────
+   ORDER FORM
+────────────────────────────────────────────────────────────── */
+function setMinDate() {
+  const dateInput = document.getElementById('fieldData');
+  if (!dateInput) return;
+  const d = new Date();
+  d.setDate(d.getDate() + 2);
+  dateInput.min = d.toISOString().split('T')[0];
+}
+
+function validateForm() {
+  const T   = TRANSLATIONS[currentLang];
+  let valid = true;
+  const fields = [
+    { id: 'fieldNume',  errId: 'errNume',  check: v => v.trim().length >= 2 },
+    { id: 'fieldTel',   errId: 'errTel',   check: v => v.trim().length >= 7 },
+    { id: 'fieldEmail', errId: 'errEmail', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    { id: 'fieldData',  errId: 'errData',  check: v => {
+      if (!v) return false;
+      const d  = new Date(v);
+      const nd = new Date(); nd.setDate(nd.getDate() + 2); nd.setHours(0,0,0,0);
+      return d >= nd;
+    }}
+  ];
+  fields.forEach(({ id, errId, check }) => {
+    const el  = document.getElementById(id);
+    const err = document.getElementById(errId);
+    const ok  = el && check(el.value);
+    if (el)  el.classList.toggle('error', !ok);
+    if (err) err.classList.toggle('show', !ok);
+    if (!ok) valid = false;
+  });
+  return valid;
+}
+
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  const T    = TRANSLATIONS[currentLang];
+  const nume = document.getElementById('fieldNume').value.trim();
+  const tel  = document.getElementById('fieldTel').value.trim();
+  const email= document.getElementById('fieldEmail').value.trim();
+  const data = document.getElementById('fieldData').value;
+  const rez  = document.getElementById('fieldRezumat').value;
+
+  // Hide form, show confirmation
+  this.style.display = 'none';
+  const conf = document.getElementById('orderConfirmation');
+  conf.hidden = false;
+
+  document.getElementById('confirmTitle').textContent =
+    `Mulțumim, ${nume}! / Thank you, ${nume}!`;
+  document.getElementById('confirmText').textContent =
+    currentLang === 'ro'
+      ? 'Comanda ta a fost înregistrată cu succes.'
+      : 'Your order has been successfully registered.';
+  document.getElementById('confirmSummary').textContent =
+    rez || ('— Dulcinella Custom Cake —\nTotal: ' + calcPrice() + ' lei');
+  document.getElementById('confirmContact').textContent =
+    currentLang === 'ro'
+      ? `Te vom contacta în cel mult 24 de ore la ${tel} sau ${email}.`
+      : `We will contact you within 24 hours at ${tel} or ${email}.`;
+});
+
+/* ──────────────────────────────────────────────────────────────
+   FAQ ACCORDION
+────────────────────────────────────────────────────────────── */
+function initFaq() {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer  = btn.nextElementSibling;
+      const isOpen  = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-question.open').forEach(q => {
+        q.classList.remove('open');
+        q.setAttribute('aria-expanded','false');
+        q.nextElementSibling.style.maxHeight = '0';
+      });
+      // Toggle clicked
+      if (!isOpen) {
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MOBILE MENU
+────────────────────────────────────────────────────────────── */
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburgerBtn');
+  const open = menu.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.getElementById('hamburgerBtn').setAttribute('aria-expanded','false');
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MOBILE PRICE BAR
+────────────────────────────────────────────────────────────── */
+function toggleMobilePriceBar() {
+  const expanded = document.getElementById('mobilePriceExpanded');
+  expanded.classList.toggle('open');
+}
+
+/* ──────────────────────────────────────────────────────────────
+   NAVBAR SCROLL EFFECT
+────────────────────────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ──────────────────────────────────────────────────────────────
+   SCROLL REVEAL (IntersectionObserver)
+────────────────────────────────────────────────────────────── */
+function initReveal() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+/* ──────────────────────────────────────────────────────────────
+   INITIALISATION
+────────────────────────────────────────────────────────────── */
+(function init() {
+  // Apply saved language
+  applyTranslations();
+  updateLangBtns();
+
+  // Set min date for order form
+  setMinDate();
+
+  // Init FAQ
+  initFaq();
+
+  // Init scroll reveal
+  initReveal();
+
+  // Init step 1 active state
+  goToStep(1);
+
+  // Initial cake draw
+  anim.currentBlat  = hexToRgb(state.blat.color);
+  anim.currentCrema = hexToRgb(state.crema.color);
+  drawCake();
+
+  // Initial price render
+  renderPriceSummary();
+})();
+
+function openCakeModal() {
+  const canvas = document.getElementById('cakeCanvas');
+  document.getElementById('cakeModalImg').src = canvas.toDataURL();
+  document.getElementById('cakeModalPrice').textContent =
+    document.getElementById('mobilePriceTotal').textContent;
+  document.getElementById('cakeModal').classList.add('open');
+}
+function closeCakeModal() {
+  document.getElementById('cakeModal').classList.remove('open');
+}
+</script>
+</body>
+</html>
