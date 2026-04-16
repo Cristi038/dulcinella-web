@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dulcinella — Torturi Custom Made</title>
-  <meta name="description" content="Dulcinella — Torturi custom made din Târgu Mureș. Creează-ți tortul perfect: alege blatul, crema, toppingurile și designul. Comandă online.">
-  <meta name="keywords" content="torturi custom, prajituri personalizate, Târgu Mureș, tort comandă online, Dulcinella">
-  <meta property="og:title" content="Dulcinella — Torturi Custom Made">
+  <title>Dulcinica — Torturi Custom Made</title>
+  <meta name="description" content="Dulcinica — Torturi custom made din Târgu Mureș. Creează-ți tortul perfect: alege blatul, crema, toppingurile și designul. Comandă online.">
+  <meta name="keywords" content="torturi custom, prajituri personalizate, Târgu Mureș, tort comandă online, Dulcinica">
+  <meta property="og:title" content="Dulcinica — Torturi Custom Made">
   <meta property="og:description" content="Creează-ți tortul perfect din Târgu Mureș. Custom made, livrat cu drag.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ro_RO">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Dulcinella — Torturi Custom Made">
+  <meta name="twitter:title" content="Dulcinica — Torturi Custom Made">
   <meta name="twitter:description" content="Torturi personalizate din Târgu Mureș. Configurează online.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
   <style>
@@ -134,9 +134,20 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 64px; gap: 24px;
     }
-    /* Logo */
+    /* Logo + phone group */
+    .nav-brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
     .nav-logo { flex-shrink: 0; cursor: pointer; }
     .nav-logo svg { height: 40px; width: auto; }
+    .nav-phone {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--brown-mid);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-phone:hover { color: var(--gold); }
     /* Nav links */
     .nav-links {
       display: flex; align-items: center; gap: 36px;
@@ -1086,6 +1097,7 @@
       .step-nav { padding: 16px; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -1095,13 +1107,16 @@
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="container">
     <div class="nav-inner">
-      <!-- Logo -->
-      <div class="nav-logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})" aria-label="Dulcinella — acasă">
-        <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="#c97d4e" stroke-width="0.8"/>
-          <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="#c97d4e" stroke-width="0.3" stroke-dasharray="3,2"/>
-          <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="#2c1a0e" letter-spacing="1">Dulcinella</text>
-        </svg>
+      <!-- Logo + Phone -->
+      <div class="nav-brand">
+        <div class="nav-logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})" aria-label="Dulcinica — acasă">
+          <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="#c97d4e" stroke-width="0.8"/>
+            <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="#c97d4e" stroke-width="0.3" stroke-dasharray="3,2"/>
+            <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="#2c1a0e" letter-spacing="1">Dulcinica</text>
+          </svg>
+        </div>
+        <a href="tel:+40743677026" class="nav-phone" aria-label="Telefon: 0743 677 026">✆ 0743 677 026</a>
       </div>
       <!-- Nav links -->
       <ul class="nav-links" role="list">
@@ -1180,7 +1195,7 @@
     <div class="section-header reveal">
       <p class="section-label" data-i18n="showcase.label">Colecție exclusivă</p>
       <h2 class="section-title" id="modeleTitle" data-i18n="showcase.title">Modele Semnătură</h2>
-      <p class="section-subtitle" data-i18n="showcase.subtitle">Creații definitorii Dulcinella — fiecare o capodoperă artizanală, gata de comandat.</p>
+      <p class="section-subtitle" data-i18n="showcase.subtitle">Creații definitorii Dulcinica — fiecare o capodoperă artizanală, gata de comandat.</p>
     </div>
     <div class="cakes-grid">
 
@@ -1643,7 +1658,7 @@
             <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" width="160">
               <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="#c97d4e" stroke-width="0.8"/>
               <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="#c97d4e" stroke-width="0.3" stroke-dasharray="3,2"/>
-              <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="#2c1a0e" letter-spacing="1">Dulcinella</text>
+              <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="#2c1a0e" letter-spacing="1">Dulcinica</text>
             </svg>
           </div>
           <h3 class="confirm-title" id="confirmTitle">Mulțumim!</h3>
@@ -1672,7 +1687,7 @@
         <div class="order-info-card reveal">
           <div class="order-info-icon">📞</div>
           <div class="order-info-title" data-i18n="order.info4.title">Contact direct</div>
-          <p class="order-info-text"><a href="tel:+40743677026" class="phone-link">0743 677 026</a><br><a href="mailto:fe.dulcinella@gmail.com" style="color:var(--gold);">fe.dulcinella@gmail.com</a></p>
+          <p class="order-info-text"><a href="tel:+40743677026" class="phone-link">0743 677 026</a><br><a href="mailto:contact@dulcinica.ro" style="color:var(--gold);">contact@dulcinica.ro</a></p>
         </div>
       </div>
     </div>
@@ -1724,10 +1739,10 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-logo">
-        <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" width="150" aria-label="Dulcinella">
+        <svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg" width="150" aria-label="Dulcinica">
           <ellipse cx="100" cy="26" rx="96" ry="23" fill="none" stroke="rgba(201,125,78,0.7)" stroke-width="0.8"/>
           <ellipse cx="100" cy="26" rx="90" ry="17" fill="none" stroke="rgba(201,125,78,0.5)" stroke-width="0.3" stroke-dasharray="3,2"/>
-          <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="rgba(253,246,238,0.9)" letter-spacing="1">Dulcinella</text>
+          <text x="100" y="31.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="18" fill="rgba(253,246,238,0.9)" letter-spacing="1">Dulcinica</text>
         </svg>
       </div>
       <div class="footer-divider"></div>
@@ -1735,11 +1750,11 @@
       <div class="footer-contact">
         <a href="tel:+40743677026" class="phone-link">0743 677 026</a>
         <span class="footer-sep">·</span>
-        <a href="mailto:fe.dulcinella@gmail.com">fe.dulcinella@gmail.com</a>
+        <a href="mailto:contact@dulcinica.ro">contact@dulcinica.ro</a>
         <span class="footer-sep">·</span>
         <span data-i18n="footer.location">Târgu Mureș, România</span>
       </div>
-      <p class="footer-copy" data-i18n="footer.copy">© 2025 Dulcinella. Toate drepturile rezervate.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2025 Dulcinica. Toate drepturile rezervate.</p>
     </div>
   </div>
 </footer>
@@ -1749,6 +1764,7 @@
 ═══════════════════════════════════════════════════════════ -->
 <script>
 'use strict';
+emailjs.init('TOzcXeQs6Z16zT7Nk');
 
 /* ──────────────────────────────────────────────────────────────
    TRANSLATIONS
@@ -1766,7 +1782,7 @@ const TRANSLATIONS = {
     showcase: {
       label:    'Colecție exclusivă',
       title:    'Modele Semnătură',
-      subtitle: 'Creații definitorii Dulcinella — fiecare o capodoperă artizanală, gata de comandat.',
+      subtitle: 'Creații definitorii Dulcinica — fiecare o capodoperă artizanală, gata de comandat.',
       orderBtn: 'Comandă acest model',
       c1: { name:'Trandafir de Vară', desc:'Frișcă batută, căpșuni proaspete, glazură roz delicată — răcoare și eleganță în fiecare felie.' },
       c2: { name:'Negresă Regală',    desc:'Ciocolată dark intensă, ganache catifelat, perle de zahăr aurii — pentru iubitorii de intensitate.' },
@@ -1833,7 +1849,7 @@ const TRANSLATIONS = {
     footer: {
       tagline:'Făcut cu dragoste în Târgu Mureș',
       location:'Târgu Mureș, România',
-      copy:'© 2025 Dulcinella. Toate drepturile rezervate.'
+      copy:'© 2025 Dulcinica. Toate drepturile rezervate.'
     }
   },
 
@@ -1849,7 +1865,7 @@ const TRANSLATIONS = {
     showcase: {
       label:    'Exclusive collection',
       title:    'Signature Models',
-      subtitle: 'Dulcinella\'s defining creations — each an artisan masterpiece, ready to order.',
+      subtitle: 'Dulcinica\'s defining creations — each an artisan masterpiece, ready to order.',
       orderBtn: 'Order this model',
       c1: { name:'Summer Rose',      desc:'Whipped cream, fresh strawberries, delicate pink glaze — freshness and elegance in every slice.' },
       c2: { name:'Royal Dark',       desc:'Intense dark chocolate, velvety ganache, golden sugar pearls — for lovers of intensity.' },
@@ -1916,7 +1932,7 @@ const TRANSLATIONS = {
     footer: {
       tagline:'Made with love in Târgu Mureș',
       location:'Târgu Mureș, Romania',
-      copy:'© 2025 Dulcinella. All rights reserved.'
+      copy:'© 2025 Dulcinica. All rights reserved.'
     }
   }
 };
@@ -1929,11 +1945,11 @@ function getT(obj, path) {
   return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : null), obj);
 }
 
-let currentLang = localStorage.getItem('dulcinella_lang') || 'ro';
+let currentLang = localStorage.getItem('dulcinica_lang') || 'ro';
 
 function setLang(l) {
   currentLang = l;
-  localStorage.setItem('dulcinella_lang', l);
+  localStorage.setItem('dulcinica_lang', l);
   applyTranslations();
   updateLangBtns();
   renderPriceSummary(); // re-render price labels in new language
@@ -1951,6 +1967,8 @@ function applyTranslations() {
       const icon = el.querySelector('.faq-icon');
       el.textContent = val;
       if (icon) el.appendChild(icon);
+    } else if (el.classList.contains('faq-answer-inner')) {
+      el.innerHTML = val;
     } else {
       el.textContent = val;
     }
@@ -2136,7 +2154,7 @@ function updateOrderSummary() {
   if (!el || el.hasAttribute('data-prefilled')) return;
   const { categories } = buildPriceLines();
   const total = calcPrice();
-  const parts = ['— Dulcinella Custom Cake —'];
+  const parts = ['— Dulcinica Custom Cake —'];
   categories.forEach(cat => {
     cat.items.forEach(item => parts.push(`${item.label}: +${item.value} lei`));
   });
@@ -3039,7 +3057,7 @@ function finalizeWithShimmer() {
 function orderModel(name, price) {
   const el = document.getElementById('fieldRezumat');
   if (el) {
-    el.value = `Model: ${name} — ${price} lei\n(Tort de semnătură Dulcinella)`;
+    el.value = `Model: ${name} — ${price} lei\n(Tort de semnătură Dulcinica)`;
     el.setAttribute('data-prefilled', '1');
   }
   scrollToOrder();
@@ -3091,24 +3109,38 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   const email= document.getElementById('fieldEmail').value.trim();
   const data = document.getElementById('fieldData').value;
   const rez  = document.getElementById('fieldRezumat').value;
+  const mesaj= document.getElementById('fieldMesaj').value.trim();
 
-  // Hide form, show confirmation
-  this.style.display = 'none';
-  const conf = document.getElementById('orderConfirmation');
-  conf.hidden = false;
+  const submitBtn = this.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
 
-  document.getElementById('confirmTitle').textContent =
-    `Mulțumim, ${nume}! / Thank you, ${nume}!`;
-  document.getElementById('confirmText').textContent =
-    currentLang === 'ro'
-      ? 'Comanda ta a fost înregistrată cu succes.'
-      : 'Your order has been successfully registered.';
-  document.getElementById('confirmSummary').textContent =
-    rez || ('— Dulcinella Custom Cake —\nTotal: ' + calcPrice() + ' lei');
-  document.getElementById('confirmContact').textContent =
-    currentLang === 'ro'
-      ? `Te vom contacta în cel mult 24 de ore la ${tel} sau ${email}.`
-      : `We will contact you within 24 hours at ${tel} or ${email}.`;
+  emailjs.send('service_85fcdtq', 'template_kyni5g1', {
+    from_name:     nume,
+    phone:         tel,
+    from_email:    email,
+    pickup_date:   data,
+    order_summary: rez || ('— Dulcinica Custom Cake —\nTotal: ' + calcPrice() + ' lei'),
+    message:       mesaj
+  }).then(() => {
+    // Hide form, show confirmation
+    this.style.display = 'none';
+    const conf = document.getElementById('orderConfirmation');
+    conf.hidden = false;
+
+    document.getElementById('confirmTitle').textContent =
+      `Mulțumim, ${nume}! / Thank you, ${nume}!`;
+    document.getElementById('confirmText').textContent =
+      'Comanda ta a fost trimisă! Te contactăm în 24 de ore.';
+    document.getElementById('confirmSummary').textContent =
+      rez || ('— Dulcinica Custom Cake —\nTotal: ' + calcPrice() + ' lei');
+    document.getElementById('confirmContact').textContent =
+      currentLang === 'ro'
+        ? `Te vom contacta în cel mult 24 de ore la ${tel} sau ${email}.`
+        : `We will contact you within 24 hours at ${tel} or ${email}.`;
+  }).catch(() => {
+    submitBtn.disabled = false;
+    alert('A apărut o eroare. Contactează-ne la 0743 677 026.');
+  });
 });
 
 /* ──────────────────────────────────────────────────────────────
